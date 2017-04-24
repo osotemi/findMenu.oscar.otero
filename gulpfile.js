@@ -4,6 +4,7 @@ var config = require('./gulp.config')();
 var del = require('del');
 var glob = require('glob');
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var path = require('path');
 var _ = require('lodash');
 var $ = require('gulp-load-plugins')({ lazy: true });
@@ -59,7 +60,7 @@ gulp.task('plato', function(done) {
 /**
  * Compile sass to css
  * @return {Stream}
- */
+ 
 gulp.task('styles', ['clean-styles'], function() {
     log('Compiling Sass --> CSS');
 
@@ -68,7 +69,16 @@ gulp.task('styles', ['clean-styles'], function() {
       .pipe(sass({outputStyle: 'compressed'}).on('error', 'sass Error'))
       .pipe(gulp.dest(config.temp));
 });
+*/
+gulp.task('sass', function () {
+  return gulp.src(config.sass)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(config.temp));
+});
 
+gulp.task('sass:watch', function () {
+  gulp.watch(config.sass, ['sass']);
+});
 /**
  * Copy fonts
  * @return {Stream}
@@ -134,7 +144,7 @@ gulp.task('wiredep', function() {
     .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
+gulp.task('inject', ['wiredep', 'sass', 'templatecache'], function() {
   log('Wire up css into the html, after files are ready');
 
   return gulp

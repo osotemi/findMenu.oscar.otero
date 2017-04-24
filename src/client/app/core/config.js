@@ -14,7 +14,7 @@
 
   var config = {
     appErrorPrefix: '[helloworld Error] ',
-    appTitle: 'helloworld'
+    appTitle: 'findMenu'
   };
 
   core.value('config', config);

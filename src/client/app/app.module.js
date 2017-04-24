@@ -2,11 +2,12 @@
   'use strict';
 
   angular.module('app', [
-    'app.core',
-    'app.widgets',
     'app.admin',
+    'app.core',
     'app.dashboard',
-    'app.layout'
+    'app.layout',
+    'app.main',
+    'app.widgets'
   ]);
 
 })();

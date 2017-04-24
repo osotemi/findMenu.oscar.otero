@@ -4,9 +4,6 @@ module.exports = function() {
   var clientApp = client + 'app/';
   var report = './report/';
   var root = './';
-  var sass = {
-    logError: "Sass Error"
-  };
   var specRunnerFile = 'specs.html';
   var temp = './.tmp/';
   var wiredep = require('wiredep');
@@ -66,7 +63,7 @@ module.exports = function() {
     },
 
     /**
-     * plato
+     * platoº
      */
     plato: { js: clientApp + '**/*.js' },
 
