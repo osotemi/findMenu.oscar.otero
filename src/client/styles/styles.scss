@@ -6,6 +6,7 @@ $color_azul: #1171A3;
 $color_azul_claro: #52B9E9;
 $color_blanco: #FFFFFF;
 $color_gris: #999999;
+$color_gris_transulucido: rgba(15,15,15,.3);
 $color_gris_claro: #dcdcdc;
 $color_gris_oscuro: #313b3d;
 $color_rojo: #fa3031;
@@ -27,6 +28,13 @@ $padding_full: 1em;
     @mixin border-invisible($size) {
         border-color: transparent;
         border-bottom: $size solid $color_verde;
+    }
+
+    @mixin border-radius($size) {
+        border: $size solid $color_gris;
+        -moz-border-radius: 0.5em;
+        -webkit-border-radius: 0.5em;
+        border-radius: 0.5em;
     }
 
 /* ==========================================================================
@@ -347,7 +355,48 @@ $padding_full: 1em;
    Css para el main section
    ========================================================================== */
    #main-view {
-       height: 100%;
+        @include border-radius(1px);
+        
+        background-repeat: no-repeat;
+        //background-origin: border-box;
+        background-image: url('../../images/pantalla-carga.png');
+        background-size: cover;
+        height: 100%;
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+   }
+
+   .main-article {
+        @include border-radius(1px);
+
+        align-self: center;
+        background-color: $color_gris_transulucido;
+        height: 40%;
+        margin-top: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+
+        h2 {
+             /* tiempo de duracion de la animacion */
+            animation-duration: 5s;
+            /* nombre de la animacion */
+            animation-name: slidein;
+            /* veces que se repite la animcaion */
+            animation-iteration-count: 1;    
+            color: $color_alerta;
+            font-size: 3em;
+            font-weight: bold;
+            padding: 5%;
+        }
+   }
+
+   .button-default{
+        align-self: center;
+        margin-bottom: 5%;
+        width: 90%;
    }
 
 /* ==========================================================================
@@ -361,3 +410,55 @@ $padding_full: 1em;
         text-align: center;
         max-height: 10%;
     }
+
+/* ==========================================================================
+   Css animaciones
+   ========================================================================== */
+    /* declaramos la animacion con los diferentes prefijos,
+    desde el inicio (0%) asta el fin (100%) */
+    @-webkit-keyframes slidein {
+        2% {
+            opacity: 0;
+            margin-top: 50%;
+            margin-bottom: 50%
+        }
+        100% {
+            opacity: 1;
+            margin: 1em;
+        }
+    }
+    @-moz-keyframes slidein {
+        2%   {
+            opacity: 0;
+            margin-top: 50%;
+            margin-bottom: 50%
+        }
+        100% {
+            opacity: 1;
+            margin: 1em;
+        }
+    }
+    @-o-keyframes slidein {
+        2%   {
+            opacity: 0;
+            margin-top: 50%;
+            margin-bottom: 50%
+        }
+        100% {
+            opacity: 1;
+            margin: 1em;
+        }
+    }
+    @keyframes slidein {
+        2%   {
+            opacity: 0;
+            margin-top: 50%;
+            margin-bottom: 50%
+        }
+        100% {
+            opacity: 1;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+    
