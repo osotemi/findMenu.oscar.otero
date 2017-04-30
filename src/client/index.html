@@ -2,14 +2,6 @@
 <html ng-app="app">
 
 <head>
-  <style>
-    /* This helps the ng-show/ng-hide animations start at the right place. */
-    /* Since Angular has this but needs to load, this gives us the class early. */
-    
-    .ng-hide {
-      display: none!important;
-    }
-  </style>
   <title ng-bind="title">
     findMenu
   </title>
@@ -41,32 +33,37 @@
 </head>
 
 <body>
-  <div class="div-full">
-    <div class="div-full" ng-include="'app/layout/shell.html'"></div>
-    <div id="splash-page" ng-show="showSplash">
-      <div class="page-splash">
-        <div class="page-splash-message">
-          helloworld
-        </div>
-        <div class="progress progress-striped active page-progress-bar">
-          <div class="bar"></div>
+    <div class="div-full" ng-include="'app/layout/shell.html'">
+      <div id="splash-page" ng-show="showSplash">
+        <div class="page-splash">
+          <div class="page-splash-message">
+            helloworld
+          </div>
+          <div class="progress progress-striped active page-progress-bar">
+            <div class="bar"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
   <!-- build:js js/lib.js -->
   <!-- bower:js -->
   <script src="/bower_components/jquery/dist/jquery.js"></script>
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-translate/angular-translate.js"></script>
+  <script src="/bower_components/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+  <script src="/bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+  <script src="/bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+  <script src="/bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="/bower_components/extras.angular.plus/ngplus-overlay.js"></script>
   <script src="/bower_components/moment/moment.js"></script>
-  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="/bower_components/toastr/toastr.js"></script>
-  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -96,6 +93,7 @@
   <script src="/src/client/app/dashboard/dashboard.route.js"></script>
   <script src="/src/client/app/layout/ht-sidebar.directive.js"></script>
   <script src="/src/client/app/layout/ht-top-nav.directive.js"></script>
+  <script src="/src/client/app/layout/navtree.controller.js"></script>
   <script src="/src/client/app/layout/shell.controller.js"></script>
   <script src="/src/client/app/layout/sidebar.controller.js"></script>
   <script src="/src/client/app/main/main.controller.js"></script>

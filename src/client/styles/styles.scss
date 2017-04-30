@@ -1,41 +1,13 @@
-
-/* Colores */
-$color_alerta: #F88529;
-$color_amarillo: #CCD229;
-$color_azul: #1171A3;
-$color_azul_claro: #52B9E9;
-$color_blanco: #FFFFFF;
-$color_gris: #999999;
-$color_gris_transulucido: rgba(15,15,15,.3);
-$color_gris_claro: #dcdcdc;
-$color_gris_oscuro: #313b3d;
-$color_rojo: #fa3031;
-$color_verde: #37a000;
-$color_violeta: #932ab6;
-/* sizes */
-$border_size: 2px;
-$font_size: 1em;
-$padding_size: 0.5em;
-$padding_full: 1em;
-
-//@import "scss";
+@import "navtree.scss";
+@import "mixin.scss";
+@import "variables.scss";
 
 //@import url('https://fonts.googleapis.com/css?family=Sarina');
 
-/* ==========================================================================
-   SASS MIXINGS
-   ========================================================================== */
-    @mixin border-invisible($size) {
-        border-color: transparent;
-        border-bottom: $size solid $color_verde;
-    }
 
-    @mixin border-radius($size) {
-        border: $size solid $color_gris;
-        -moz-border-radius: 0.5em;
-        -webkit-border-radius: 0.5em;
-        border-radius: 0.5em;
-    }
+#splash-pag{
+    background-color: #4EE;
+}
 
 /* ==========================================================================
    CSS general de la aplicacion "mobile first"
@@ -105,7 +77,7 @@ $padding_full: 1em;
     }
 
 /* ==========================================================================
-   Css para slidebar
+   Css para sidebar
    ========================================================================== */
     /* Sidebar */
 
@@ -356,13 +328,12 @@ $padding_full: 1em;
    ========================================================================== */
    #main-view {
         @include border-radius(1px);
-        
+        @include responsive-layout(450px);
+
         background-repeat: no-repeat;
         //background-origin: border-box;
         background-image: url('../../images/pantalla-carga.png');
         background-size: cover;
-        height: 100%;
-        max-width: 450px;
         margin-left: auto;
         margin-right: auto;
         text-align: center;

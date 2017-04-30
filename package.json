@@ -1,7 +1,7 @@
 {
   "name": "helloworld",
   "description": "helloworld Project Generated from HotTowel Angular",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "scripts": {
     "init": "npm install",
     "install": "bower install",
@@ -12,10 +12,12 @@
   "dependencies": {
     "body-parser": "~1.8.2",
     "express": "~4.9.3",
+    "gulp": "^3.9.1",
     "morgan": "~1.1.1",
     "serve-favicon": "~2.0.1"
   },
   "devDependencies": {
+    "angular-translate": "^2.15.1",
     "browser-sync": "~2.12.2",
     "chai": "~3.1.0",
     "chai-as-promised": "~5.1.0",

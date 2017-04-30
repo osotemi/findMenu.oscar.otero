@@ -5,18 +5,18 @@
     .module('blocks.logger')
     .factory('logger', logger);
 
-  logger.$inject = ['$log', 'toastr'];
+  logger.$inject = ['$log', 'toastr', 'config'];
 
   /* @ngInject */
-  function logger($log, toastr) {
+  function logger($log, toastr, config) {
     var service = {
       showToasts: true,
 
+      cookiesAdvice: cookiesAdvice,
       error: error,
       info: info,
       success: success,
       warning: warning,
-
       // straight to console; bypass toastr
       log: $log.log
     };
@@ -43,5 +43,11 @@
       toastr.warning(message, title);
       $log.warn('Warning: ' + message, data);
     }
+
+    function cookiesAdvice(message, data, title) {
+      toastr.info(message + '<br /><br /><button type="button" class="btn clear">Aceptar</button>', title);
+      $log.info('Info: ' + message, data);
+    }
+
   }
 } ());

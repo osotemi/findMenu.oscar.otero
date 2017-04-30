@@ -3,14 +3,15 @@
 
   angular
     .module('app.main')
-    .controller('MainController', DashboardController);
+    .controller('MainController', MainController);
 
-  DashboardController.$inject = ['$q', 'dataservice', 'logger'];
+  MainController.$inject = ['$q', 'dataservice', 'logger', '$translate', '$translatePartialLoader',];
   /* @ngInject */
-  function DashboardController($q, dataservice, logger) {
+  function MainController($q, $translate, $translatePartialLoader, dataservice, logger) {
     var vm = this;
-
-    vm.title = 'Dashboard';
+    vm.title = 'Main';
+    //$translatePartialLoader.addPart('main');
+    //$translate.refresh();
 
     activate();
 
@@ -23,20 +24,6 @@
 
     //Funcionalidad de cookies
     //
-    /*
-    function getMessageCount() {
-      return dataservice.getMessageCount().then(function(data) {
-        vm.messageCount = data;
-        return vm.messageCount;
-      });
-    }
-
-    function getPeople() {
-      return dataservice.getPeople().then(function(data) {
-        vm.people = data;
-        return vm.people;
-      });
-    }
-    */
+    
   }
 })();

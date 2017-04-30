@@ -1,7 +1,9 @@
 <nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-collapse collapse" uib-collapse="isCollapsed">
     <button type="button" class="btn btn-default" aria-label="Left Align">
-      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true">
+        <div ht-sidebar whenDoneAnimating="vm.sidebarReady()"></div>
+      </span>
     </button>
     <div class="pull-right navbar-logo">
       <ul class="nav navbar-nav pull-right">

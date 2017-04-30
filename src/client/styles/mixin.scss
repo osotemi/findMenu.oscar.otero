@@ -1,0 +1,33 @@
+/* ==========================================================================
+   SASS MIXIN
+   ========================================================================== */
+/* ==========================================================================
+   BORDER
+   ========================================================================== */    
+    
+    
+    @mixin border-invisible($size) {
+        border-color: transparent;
+        border-bottom: $size solid $color_verde;
+    }
+
+    @mixin border-radius($size) {
+        border: $size solid $color_gris;
+        -moz-border-radius: 0.5em;
+        -webkit-border-radius: 0.5em;
+        border-radius: 0.5em;
+    }
+
+
+/* ==========================================================================
+   SIZES
+   ========================================================================== */
+
+   @mixin responsive-layout($max) {
+        height: 100%;
+        max-width: $max;
+        -moz-height:  100%;
+        -moz-max-width: $max;
+        -webkit-height:  100%;
+        -webkit-max-width: $max;
+    }

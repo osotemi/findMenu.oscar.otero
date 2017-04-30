@@ -21,6 +21,10 @@
 
     function activate() {
       logger.success(config.appTitle + ' loaded!', null);
+      logger.cookiesAdvice(
+        'LAS COOKIES PERMITEN UNA GAMA DE FUNCIONALIDADES QUE MEJORAN LA FORMA EN LA QUE USTED DISFRUTA FINDMENU. ' +
+        'AL UTILIZAR ESTE SITIO, USTED ACEPTA EL USO DE COOKIES DE CONFORMIDAD CON NUESTRAS DIRECTRICES. PARA OBTENER MÁS INFORMACIÓN, '
+        ,'Cookies Advice');
       hideSplash();
     }
 

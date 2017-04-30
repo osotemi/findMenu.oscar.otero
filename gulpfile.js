@@ -79,6 +79,27 @@ gulp.task('sass', function () {
 gulp.task('sass:watch', function () {
   gulp.watch(config.sass, ['sass']);
 });
+
+/**
+ * Copy i18n partial translations
+ * @return {Stream}
+ */
+gulp.task('i18n', ['clean-i18n'], function() {
+    log('Copying partial i18n translations');
+
+    return gulp
+        .src(config.i18n)
+        .pipe(gulp.dest(config.build + 'i18n'));
+});
+
+/**
+ * Remove all i18n partial translations
+ * @param  {Function} done - callback when complete
+ */
+gulp.task('clean-i18n', function(done) {
+    clean(config.build + 'i18n/**/*.*', done);
+});
+
 /**
  * Copy fonts
  * @return {Stream}
@@ -196,7 +217,7 @@ gulp.task('build-specs', ['templatecache'], function(done) {
  * This is separate so we can run tests on
  * optimize before handling image or fonts
  */
-gulp.task('build', ['optimize', 'images', 'fonts'], function() {
+gulp.task('build', ['optimize', 'i18n', 'images', 'fonts'], function() {
   log('Building everything');
 
   var msg = {
