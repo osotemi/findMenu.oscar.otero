@@ -5,10 +5,11 @@
     .module('app.main')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$q', 'dataservice', 'logger', '$translate', '$translatePartialLoader',];
+  MainController.$inject = ['$q', '$state', 'dataservice', 'logger', '$translate', '$translatePartialLoader',];
   /* @ngInject */
-  function MainController($q, dataservice, logger, $translate, $translatePartialLoader) {
+  function MainController($q, $state, dataservice, logger, $translate, $translatePartialLoader) {
     var vm = this;
+    vm.singInOnClick = singInOnClick();
     vm.title = 'Main';
     $translatePartialLoader.addPart('main');
     $translate.refresh();
@@ -18,12 +19,16 @@
     function activate() {
       var promises = [];
       return $q.all(promises).then(function() {
-        //logger.info('Activated Main View');
+        logger.info('Activated Main View');
       });
     }
 
     //Funcionalidad de cookies
     //
-    
+
+    /* Eventos */
+    function singInOnClick() {
+      //$state.go('auth');
+    }    
   }
 })();

@@ -1,7 +1,11 @@
-<section id="main-view" class="main-auth" ng-controller="MainController as vm">
-    <article id="main-article" class="main-article">
+<section id="main-view" class="base-section" ng-controller="MainController as vm">
+    <article id="main-article" class="base-article">
         <h2  class="main-title" translate="WELCOME">Bienvenido</h2>
-        <button class="button-default" translate="BTN_COMEIN">Registrarse</button>
-        <button class="button-default" translate="BTN_GUEST">Descubre findMenu</button>
+        <a href="/auth" >
+            <button class="button-default" translate="BTN_COMEIN">Registrarse</button>
+        </a>
+        <a href="/user" >
+            <button class="button-default" translate="BTN_GUEST">Descubre findMenu</button>
+        </a>
     </article>
-</section>>
+</section>

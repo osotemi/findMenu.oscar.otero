@@ -2,8 +2,7 @@
   'use strict';
 
   angular.module('app.layout', [
-    'app.core', 
-    'ngCookies',
+    'app.core',
     'ui.bootstrap.collapse'
     ]
   );

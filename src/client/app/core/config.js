@@ -20,7 +20,6 @@
         progressBar: false,
         positionClass: 'toast-bottom-full-width',
         preventDuplicates: false,
-        onclick: null,
         showDuration: 3000,
         hideDuration: '1000',
         timeOut: 0,

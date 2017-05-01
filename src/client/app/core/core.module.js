@@ -4,8 +4,8 @@
   angular
     .module('app.core', [
       'ngAnimate', 'ngSanitize', 'ngCookies', 'pascalprecht.translate',
-      'blocks.exception', 'blocks.logger', 'blocks.router',
-      'ui.router', 'ngplus'
+      'blocks.exception', 'blocks.logger', 'blocks.router', 'blocks.cookies',
+      'ui.router', 'ngplus', 'app.layout'
     ])
     .factory('MyErrorHandler', function ($q, $log) {
       return function (part, lang, response) {
@@ -15,7 +15,6 @@
     })
     .run(function ($rootScope, $translate) {
       $rootScope.$on('$translatePartialLoaderStructureChanged', function () {
-        console.log('TRANSLATE REFRESH');
         $translate.refresh();
       });
     });

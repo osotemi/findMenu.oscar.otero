@@ -2,22 +2,25 @@
     'use strict';
 
     angular
-        .module('app.layout')
-        .factory('fmCookies', fmCookies);
+        .module('blocks.cookies')
+        .factory('cookies', cookies);
 
     /* @ngInject */
-    fmCookies.$inject =['$cookies'];
+    cookies.$inject =['$cookies'];
   
-    function fmCookies( $cookies ) {
+    function cookies( $cookies ) {
         return {
             Base64encode : Base64encode,
             Base64decode : Base64decode,
             CheckCookies : CheckCookies,
+            CheckUser : CheckUser,
             ClearCookies : ClearCookies,
             DecodeData : DecodeData,
             EncodeData : EncodeData,
             GetSession : GetSession,
-            NewSession : NewSession
+            GetUser : GetUser,
+            NewSession : NewSession,
+            SetSession : SetSession
         };
 
         function Base64decode(input) {
@@ -86,10 +89,11 @@
                       enc4 = 64;
                   }
 
-                  output.concat(keyStr.charAt(enc1))
-                        .concat(keyStr.charAt(enc2))
-                        .concat(keyStr.charAt(enc3))
-                        .concat(keyStr.charAt(enc4));
+                  output = output +
+                          keyStr.charAt(enc1) +
+                          keyStr.charAt(enc2) +
+                          keyStr.charAt(enc3) +
+                          keyStr.charAt(enc4);
                   
                   chr1 = chr2 = chr3 = '';
                   enc1 = enc2 = enc3 = enc4 = '';
@@ -102,7 +106,15 @@
 
         function CheckCookies(){
             var session = GetSession();
-            if(session) return DecodeData();
+            if(session) return true;//DecodeData();
+            console.log(session);
+            NewSession();
+            return false;
+        }
+
+        function CheckUser(){
+            var user = GetUser();
+            if(user) return true;//DecodeData();
             NewSession();
             return false;
         }
@@ -124,55 +136,69 @@
             
         }
 
-        function DecodeData() {
-            var avatar = Base64decode($cookies.getObject('session').avatar);
-            var user = Base64decode($cookies.getObject('session').user);
-            var email = Base64decode($cookies.getObject('session').email);
-            var name = Base64decode($cookies.getObject('session').name);
-            return {user: user, avatar: avatar, email:email, name: name};
+        function DecodeData(data) {
+            var dataDecrypt = Base64decode(data);
+            return JSON.parse(dataDecrypt);
         }
 
          function EncodeData(data) {
-            var avatar = Base64encode(user.avatar); 
-            var user = Base64encode(user.user);
-            var email = Base64encode(user.email);
-            var name = Base64encode(user.name);
-            return {user: user, avatar: avatar, email: email, name: name};
+            var dataEncrypt = JSON.stringify(data);
+            return Base64encode(dataEncrypt);
         }
-
 
         function GetSession() {
             //al cargarse la pagina por primera vez, user es undefined
             var session = $cookies.getObject('session');
-            if (session) { //si no es undefined
-                console.log(session); //datos encriptados
-                session = DecodeData();
+            console.log(session); //datos encriptados
+            if (session) {
+                session = Base64decode(session);
+                session = JSON.parse(session);
                 console.log(session); //datos no encriptados
             }
             return session;
         }
 
+        function GetUser(){
+            return false;
+        }
+
         function NewSession(users) {
             //Crear variables con los datos necesarios
-            var userData = {
-                userId: '', 
-                userType: Base64encode('guest'), 
+            var sessionData = {
+                cookiesOk : false,
+                name: '',
+                path: '/',
                 start: new Date().getTime(), 
-                name: ''
+                userId: '', 
+                userType: 'guest'
             }
-
             if(users){
-                userData.userId = Base64encode(users.user);
-                userData.userType = Base64encode(users.type);
-                userData.name = Base64encode(users.name);
+                sessionData.userId = users.user;
+                sessionData.userType = users.type;
+                sessionData.name = users.name;
             }
             
             //Se crea cookie de session 
-            $cookies.putObject('session', userData,
+            $cookies.putObject('session', EncodeData(sessionData),
             {expires: new Date(new Date().getTime() + 60 * 60 * 1000)});
+            console.log('Creada cookie de session');
+            return true;
 
         }
         
+        function SetSession(cookie){
+            //Leer cookie
+            var session = GetSession();
+            if(!session.cookiesOk && cookie){
+                session.cookiesOk = cookie;
+                console.log('Política aceptada');
+                //console.log(session);
+            }
+
+            $cookies.putObject('session', EncodeData(session),
+            {expires: new Date(new Date().getTime() + 60 * 60 * 1000)});
+            return true;
+        }
     }
 
 }());
