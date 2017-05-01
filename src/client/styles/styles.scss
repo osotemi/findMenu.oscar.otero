@@ -1,6 +1,8 @@
-@import "navtree.scss";
-@import "mixin.scss";
 @import "variables.scss";
+@import "mixin.scss";
+
+@import "navtree.scss";
+
 
 //@import url('https://fonts.googleapis.com/css?family=Sarina');
 
@@ -311,6 +313,7 @@
    ========================================================================== */
     main{
         background-color: $color_gris_oscuro;
+        height: 100%;
         padding: $padding_size / 2;
         width: 100%;
     }
@@ -320,7 +323,7 @@
         background-color: $color_gris_oscuro;
         padding: $padding_size;
         @include border-invisible(2px);
-        height: 100%;
+        @include responsive-layout(850px);
     }
 
 /* ==========================================================================
@@ -328,12 +331,12 @@
    ========================================================================== */
    #main-view {
         @include border-radius(1px);
-        @include responsive-layout(450px);
-
+        @include responsive-layout(850px);
         background-repeat: no-repeat;
         //background-origin: border-box;
         background-image: url('../../images/pantalla-carga.png');
-        background-size: cover;
+        background-size: auto;
+        background-position: center;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -345,9 +348,10 @@
         align-self: center;
         background-color: $color_gris_transulucido;
         height: 40%;
-        margin-top: 30%;
+        margin-top: 10%;
         margin-left: auto;
         margin-right: auto;
+        max-width: 450px;
         width: 90%;
 
         h2 {

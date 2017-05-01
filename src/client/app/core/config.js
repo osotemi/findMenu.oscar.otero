@@ -23,7 +23,7 @@
         onclick: null,
         showDuration: 3000,
         hideDuration: '1000',
-        timeOut: 3500,
+        timeOut: 0,
         extendedTimeOut: 0,
         showEasing: 'swing',
         hideEasing: 'linear',
@@ -34,7 +34,7 @@
   }
 
   var config = {
-    appErrorPrefix: '[helloworld Error] ',
+    appErrorPrefix: '[findMenu Error] ',
     appTitle: 'findMenu'
   };
 
@@ -91,7 +91,7 @@
 
     $translateProvider
       .determinePreferredLanguage()
-      .fallbackLanguage('gl_ES')
+      .fallbackLanguage('en')
       .useSanitizeValueStrategy('sanitize');
 
 
