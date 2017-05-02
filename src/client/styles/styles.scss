@@ -324,7 +324,7 @@
         background-color: $color_gris_oscuro;
         padding: $padding_size;
         @include border-invisible(2px);
-        @include responsive-layout(800px);
+        @include responsive-layout(800px, 100%);
     }
 
 /* ==========================================================================

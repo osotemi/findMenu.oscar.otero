@@ -1,8 +1,24 @@
-<div id="header_content" class="">
-    <ht-top-nav ng-show="true" navline="vm.navline"></ht-top-nav>
-    <ul>
-        <li>Submenu1</li>
-        <li>Submenu2</li>
-    </ul>
+<nav class="navbar navbar-default" role="navigation" ng-controller="NavtreeController as vm">
+    <div id="topnav" class="navbar-header">
+        <button id="btn-burger" type="button" class="navbar-toggle fa fa-bars" ng-click="vm.navCollapsed = !vm.navCollapsed">   
+        </button>
+        <div class="pull-right navbar-logo">
+            <ul class="nav navbar-nav pull-right">
+            <li>
+                <a ng-href="{{vm.navline.link}}" target="_blank">
+                    {{vm.navline.text}}
+                </a>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <div class="navbar-collapse collapse" ng-class="!vm.navCollapsed && 'in'">
+        <ul class="navi">
+            <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
+                <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-</div>
+<!-- uib-collapse="isNavCollapsed" -->

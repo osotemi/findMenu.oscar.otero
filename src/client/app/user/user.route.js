@@ -21,6 +21,10 @@
           controller: 'UserController',
           controllerAs: 'vm',
           title: 'User View',
+          settings: {
+            nav: 2,
+            content: '<i class="fa fa-dashboard"></i> Dashboard'
+          }
         }
       }
     ];

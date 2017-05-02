@@ -13,6 +13,11 @@
         var states = routerHelper.getStates();
         vm.isCurrent = isCurrent;
         vm.setLang = setLang;
+        vm.navCollapsed = true;
+        vm.navline = {
+            title: config.appTitle,
+            text: 'Eslogan findMenu'
+        };
         activate();
 
         function activate() {

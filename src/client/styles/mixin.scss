@@ -23,12 +23,12 @@
    SIZES
    ========================================================================== */
 
-   @mixin responsive-layout($max) {
-        height: 100%;
+   @mixin responsive-layout($max, $height) {
+        height: $height;
         max-width: $max;
-        -moz-height:  100%;
+        -moz-height:  $height;
         -moz-max-width: $max;
-        -webkit-height:  100%;
+        -webkit-height:  $height;
         -webkit-max-width: $max;
     }
 

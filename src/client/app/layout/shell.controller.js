@@ -12,10 +12,6 @@
     vm.loadingMessage = 'Please wait ...';
     vm.isBusy = true;
     $rootScope.showSplash = true;
-    vm.navline = {
-      title: config.appTitle,
-      text: 'Eslogan findMenu'
-    };
     vm.session = {};
 
     activate();

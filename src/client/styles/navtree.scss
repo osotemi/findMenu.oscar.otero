@@ -5,10 +5,13 @@
     #header_content {
         padding-left: 10%;
         padding-right: 10%;
-        background-color: #EEEB2B;
     }
 
-    #splash-pag {
-        @include responsive-layout(450px);
+    #topnav{
         background-color: #EEEB2B;
+        display: inline-block;
+        @include responsive-layout(800px, 10%);
+        width: 100%;
+        padding-left: auto;
+        padding-right: auto;
     }
