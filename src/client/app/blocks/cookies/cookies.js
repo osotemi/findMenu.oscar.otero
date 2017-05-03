@@ -107,7 +107,7 @@
         function CheckCookies(){
             var session = GetSession();
             if(session) return true;//DecodeData();
-            console.log(session);
+            //console.log(session);
             NewSession();
             return false;
         }
@@ -149,11 +149,9 @@
         function GetSession() {
             //al cargarse la pagina por primera vez, user es undefined
             var session = $cookies.getObject('session');
-            console.log(session); //datos encriptados
             if (session) {
                 session = Base64decode(session);
                 session = JSON.parse(session);
-                console.log(session); //datos no encriptados
             }
             return session;
         }

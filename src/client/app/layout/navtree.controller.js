@@ -5,9 +5,9 @@
             .module('app.layout')
             .controller('NavtreeController', NavtreeController);
 
-    NavtreeController.$inject = ['$translate', '$translatePartialLoader','$state', 'routerHelper'];
+    NavtreeController.$inject = [ 'config', '$translate', '$translatePartialLoader','$state', 'routerHelper'];
     /* @ngInject */
-    function NavtreeController($translate, $translatePartialLoader, $state, routerHelper) {
+    function NavtreeController(config, $translate, $translatePartialLoader, $state, routerHelper) {
         var vm = this;
         $translatePartialLoader.addPart('layout');
         var states = routerHelper.getStates();

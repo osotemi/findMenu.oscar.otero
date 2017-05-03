@@ -18,6 +18,24 @@
 
     function activate() {
       var promises = [];
+      var data = {
+          name: 'Admin Findmenu',
+          from: 'oscarompro@gmail.com',
+          to: 'oscarompro@gmail.com',
+          subject: 'test inputSubject',
+          text: 'test inputMessage',
+          template: 'toUserTemplate'
+      };
+
+      dataservice.sendMail(data).then(function (response) {
+          if (response) {
+            console.log('Test envio email Correcto');
+          } else {
+            console.log('Test envio email Fallido');
+            console.log(response);
+          }
+      });
+
       return $q.all(promises).then(function() {
         logger.info('Activated Main View');
       });

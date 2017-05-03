@@ -29,7 +29,7 @@
         showMethod: 'fadeIn',
         hideMethod: 'fadeOut',
         tapToDismiss: true
-      }
+      };
   }
 
   var config = {

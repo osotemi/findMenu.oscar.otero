@@ -22,6 +22,16 @@
           controllerAs: 'vm',
           title: 'Authentication',
         }
+      },
+      {
+          state: 'signup',
+          config: {
+              url: '/auth/signup',
+              templateUrl: 'app/auth/auth-singup-modal.html',
+              controller: 'AuthController',
+              controllerAs: 'vm',
+              title: 'Signup'
+          }
       }
     ];
   }
