@@ -2,11 +2,12 @@ var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
 exports.sendEmail = function (req, res) {
-    var email = '';
+    var email = {};
     var emailTo = 'oscarompro@gmail.com';
     var emailFrom = 'oscarompro@gmail.com';
     var body='';
     //Conseguir sendgridKey y montar transort para email
+    console.log('--> Clavve sendgrid: ' + process.env.sendgridKey);
     var options = {
         auth: {
             api_key: process.env.sendgridKey
@@ -19,7 +20,7 @@ exports.sendEmail = function (req, res) {
     switch (req.body.template) {
         case 'toUserTemplate':
             emailTo = req.body.from;
-             body = '<body>' +
+            body = '<body>' +
                     '<div id="contact-email">' +
                     '<div> <h1>Contacto con Findmenu</h1> <h4>Sugerencia: ' + req.body.subject +
                     '</h4></div>' +
@@ -44,6 +45,7 @@ exports.sendEmail = function (req, res) {
         html: templateHtml
     };
 
+    console.log(email);
     mailer.sendMail(email, function (error, info) {
         if (error) {
             res.status('401').json({

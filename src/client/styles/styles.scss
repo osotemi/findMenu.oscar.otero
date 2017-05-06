@@ -20,7 +20,6 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-
         .div-full {
             height: 100%;
         }
@@ -33,10 +32,14 @@
         flex: 0 0 auto;
         background-color: $color_gris_claro;
         padding-top: $padding_size;
+        align-items: center;
     }
 
     nav {
         flex-direction: column;
+        display: flex;
+        align-items: center;
+        @include responsive-layout(auto, 10%);
 
         .menu {
             @include border-invisible(2px);

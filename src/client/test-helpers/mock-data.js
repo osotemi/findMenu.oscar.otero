@@ -1,10 +1,10 @@
 /* jshint -W079 */
 var mockData = (function() {
   return {
-    getMockPeople: getMockPeople,
-    getMockStates: getMockStates
+    //getMockPeople: getMockPeople,
+   //getMockStates: getMockStates
   };
-
+/**
   function getMockStates() {
     return [
       {
@@ -33,4 +33,5 @@ var mockData = (function() {
       { firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming' }
     ];
   }
+   */
 })();

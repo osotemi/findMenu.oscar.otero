@@ -2,16 +2,18 @@
     NAV-TREE STYLE
     ========================================================================== */
 
-    #header_content {
-        padding-left: 10%;
-        padding-right: 10%;
-    }
-
     #topnav{
         background-color: #EEEB2B;
-        display: inline-block;
-        @include responsive-layout(800px, 10%);
+        
+        
+    }
+
+    .navtree{
+        background-color: #CE342B;
         width: 100%;
-        padding-left: auto;
-        padding-right: auto;
+        @include responsive-layout(850px, 10%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: visible;
     }

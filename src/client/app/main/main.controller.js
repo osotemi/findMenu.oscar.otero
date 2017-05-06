@@ -21,7 +21,7 @@
       var data = {
           name: 'Admin Findmenu',
           from: 'oscarompro@gmail.com',
-          to: 'oscarompro@gmail.com',
+          to: 'oscar.otero.millan@gmail.com',
           subject: 'test inputSubject',
           text: 'test inputMessage',
           template: 'toUserTemplate'

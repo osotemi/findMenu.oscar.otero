@@ -39,7 +39,7 @@ module.exports = function(passport) {
                         avatar: ''   
                     };
 
-                    Mysql.insertUser(newUser, function (rows) {
+                    mySql.insertUser(newUser, function (rows) {
                         if (rows) {
                             return done(null, user);
                         }

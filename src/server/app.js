@@ -12,6 +12,8 @@ var logger = require('morgan');
 var passport = require('passport');
 var port = process.env.PORT || 8001;
 
+//Cargamos la key desde config/.env
+dotenv.load({ path: './src/server/config/.env'});
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
