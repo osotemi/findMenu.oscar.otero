@@ -2,18 +2,87 @@
     NAV-TREE STYLE
     ========================================================================== */
 
-    #topnav{
-        background-color: #EEEB2B;
-        
-        
+/* ==========================================================================
+   Css para la barra de navegación principal
+   ========================================================================== */
+    header {
+        flex: 0 0 auto;
+        background-color: $color_gris_oscuro;
+        align-items: center;
     }
 
-    .navtree{
-        background-color: #CE342B;
-        width: 100%;
-        @include responsive-layout(850px, 10%);
+    nav {
+        background: none;
+        flex-direction: column;
         display: flex;
-        justify-content: center;
         align-items: center;
-        overflow-y: visible;
-    }
+        @include responsive-layout(auto, 10%);
+        
+        #btn-burger {
+            align-self: left;
+            color: $color_amarillo;
+            margin-left: $padding_size / 2;
+            background-color: $color_gris_oscuro;
+            border: $border_size solid $color_gris_oscuro;
+            
+            @include mq-desktop-width{
+                display: none;    
+            }
+
+            &:hover{
+                text-decoration:none;
+                color: $color_verde;
+            }
+        }
+
+        .navtree{
+            background-color: #CE342B;
+            @include responsive-layout(800px, 10%);
+            width: 100%;
+            padding: 1em;
+        }
+
+        .menu {
+            @include border-invisible(2px);
+            @include responsive-layout(800px, 10%);
+            background-color: $color_alerta;
+            width: 100%;
+            float: left; /* Desplazamos el nav hacia la izquierda */
+            
+
+            ul {
+                list-style: none;
+                -webkit-margin-before: 0em;
+                -webkit-margin-after: 0em;
+                overflow: hidden; /* Limpiamos errores de float */
+                padding: $padding_size;
+
+                li {
+                    float: left;
+                    font-size: $font_size * 2;
+                    margin-right: $padding_size * 2;
+                    
+                    a {
+                        padding-right: $padding_size * 2;
+                    }
+
+                    .active a {
+                        color: $color_verde !important;
+                    }
+                    a:hover {
+                        color: $color_gris_claro;
+                        text-decoration: none;
+                    }
+                }
+
+                li:hover {
+                    box-shadow:
+                    1px 1px $color_gris_claro,
+                    2px 2px $color_gris_claro,
+                    3px 3px $color_gris_claro;
+                    -webkit-transform: translateX(-3px);
+                    transform: translateX(-3px);
+                }
+            }
+        }
+    }   

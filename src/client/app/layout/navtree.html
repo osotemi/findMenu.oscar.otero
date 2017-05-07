@@ -1,24 +1,16 @@
 <nav role="navigation" ng-controller="NavtreeController as vm">
     <div id="topnav" class="navtree">
-        <button id="btn-burger" type="button" class="navbar-toggle fa fa-bars" ng-click="vm.navCollapsed = !vm.navCollapsed">   
+        <button id="btn-burger" type="button" ng-click="vm.btnHamburguerOnClick()" ng-hide="vm.btnBurgerCollapsed" class="fa fa-bars ">   
         </button>
         <div class="pull-right navbar-logo">
-            <ul class="pull-right">
-            <li>
-                <a ng-href="{{vm.navline.link}}" target="_blank">
-                    {{vm.navline.text}}
-                </a>
-            </li>
-            </ul>
+            {{vm.navline.text}}
         </div>
     </div>
-    <div class="navbar-collapse navtree menu" ng-class="!vm.navCollapsed && 'in'">
-        <ul class="navi">
+    <div class="menu" ng-hide="vm.navCollapsed">
+        <ul>
             <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)" ng-repeat="r in vm.navRoutes">
                 <a ui-sref="{{r.name}}" ng-bind-html="r.settings.content"></a>
             </li>
         </ul>
     </div>
 </nav>
-
-<!-- uib-collapse="isNavCollapsed" -->

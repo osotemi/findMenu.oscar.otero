@@ -27,17 +27,17 @@
           template: 'toUserTemplate'
       };
 
-      dataservice.sendMail(data).then(function (response) {
+      /**dataservice.sendMail(data).then(function (response) {
           if (response) {
             console.log('Test envio email Correcto');
           } else {
             console.log('Test envio email Fallido');
             console.log(response);
           }
-      });
+      });*/
 
       return $q.all(promises).then(function() {
-        logger.info('Activated Main View');
+        console.log('Activated Main View');
       });
     }
 

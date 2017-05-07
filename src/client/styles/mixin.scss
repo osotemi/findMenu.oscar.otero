@@ -33,7 +33,7 @@
     }
 
 /* ==========================================================================
-   BOTONES
+   BUTTONS
    ========================================================================== */
 
    @mixin btn-social($backgroundColor, $backgroundImg) {
@@ -42,4 +42,31 @@
         background-position: 20%;
         background-repeat: no-repeat;
         background-size: contain;        
+    }
+
+/* ==========================================================================
+   MEDIA QUERIES
+   ========================================================================== */
+    @mixin mq-phone-width {
+        @media (max-width: #{$phone-width} - 1px) {
+            @content;
+        }
+    }
+
+    @mixin mq-tablet-width {
+        @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 1px}) {
+            @content;
+        }
+    }
+
+    @mixin mq-desktop-width {
+        @media (min-width: #{$tablet-width}) and (max-width: #{desktop-width - 1px}) {
+            @content;
+        }
+    }
+
+    @mixin mq-panoramic-desktop-width {
+        @media (min-width: #{$desktop-width}) {
+            @content;
+        }
     }

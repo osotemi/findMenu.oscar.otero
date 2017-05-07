@@ -186,7 +186,7 @@ The `blocks.router` module contains a routing helper module that assists in addi
 
 - `gulp styles`
 
-    Compile less files to CSS, add vendor prefixes, and copy to the build folder
+    Compile sass files to CSS, add vendor prefixes, and copy to the build folder
 
 ### Bower Files
 

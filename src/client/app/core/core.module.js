@@ -3,9 +3,18 @@
 
   angular
     .module('app.core', [
-      'ngAnimate', 'ngSanitize', 'ngCookies', 'pascalprecht.translate',
-      'blocks.exception', 'blocks.logger', 'blocks.router', 'blocks.cookies',
-      'ui.router', 'ngplus', 'app.layout'
+      'app.layout',
+      'blocks.cookies',
+      'blocks.exception',
+      'blocks.logger', 
+      'blocks.router',
+      'ngAnimate', 
+      'ngCookies',
+      'ngplus',
+      'ngSanitize',
+      'pascalprecht.translate',
+      'ui.bootstrap',
+      'ui.router',
     ])
     .factory('MyErrorHandler', function ($q, $log) {
       return function (part, lang, response) {

@@ -25,292 +25,9 @@
         }
     }
 
-/* ==========================================================================
-   Css para la barra de navegación principal
-   ========================================================================== */
-    header {
-        flex: 0 0 auto;
-        background-color: $color_gris_claro;
-        padding-top: $padding_size;
-        align-items: center;
-    }
-
-    nav {
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-        @include responsive-layout(auto, 10%);
-
-        .menu {
-            @include border-invisible(2px);
-            background-color: $color_gris_oscuro;
-            width: 100%;
-            float: left; /* Desplazamos el nav hacia la izquierda */
-
-            ul {
-                list-style: none;
-                -webkit-margin-before: 0em;
-                -webkit-margin-after: 0em;
-                overflow: hidden; /* Limpiamos errores de float */
-                li {
-                    float: left;
-                    font-size: $font_size * 2;
-                    padding-right: $padding_size;
-                    
-                    .active a{
-                        color: $color_verde !important;
-                    }
-                }
-            }
-        }
-    }
-
-    .nav-button {
-        display: block; /* Convertimos los elementos a en elementos bloque para manipular el padding */
-        color: $color_amarillo;
-        margin-left: $padding_size / 2;
-        background-color: $color_gris_oscuro;
-        border: $border_size solid $color_gris_oscuro;
-        &:hover{
-            text-decoration:none;
-            color: $color_verde;
-            border-bottom: $border_size solid $color_verde;
-        }
-    }
-
     .profile{
         font-size: 50%;
     }
-
-/* ==========================================================================
-   Css para sidebar
-   ========================================================================== */
-    /* Sidebar */
-
-    .sidebar {
-        width: 230px;
-        float: left;
-        display: block;
-        background: #111;
-        color: #eee;
-        position: relative;
-
-        hr {
-            border-bottom: 1px solid #333 !important;
-        }
-
-        ul {
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-
-            li {
-                list-style-type: none;
-            }
-        }
-        .sidebar-inner {
-            display: block;
-            width: 100%;
-            margin: 0 auto;
-            position: absolute;
-            z-index: 60;
-            background: #111;
-        }
-
-        .navi {
-            li {
-                i {
-                    margin-right: 5px;
-                }
-                span i {
-                    margin: 0;
-                }
-
-                ul {
-                    display: none;
-                    background: #181818;
-
-                    li a {
-                        display: block;
-                        background: none;
-                        padding: 10px 0;
-                        padding-left: 30px;
-                        text-decoration: none;
-                        color: #999;
-                        border-bottom: 1px solid #222;
-                    }
-
-                    li.active a {
-                        background: #131313;
-                        border-bottom: 1px solid #222;
-                    }
-
-                    li a:hover {
-                        background: #131313;
-                        border-bottom: 1px solid #222;
-                    }
-                }
-            }
-            
-            li.open ul {
-                display: block;
-            }
-        }
-
-        .navi > li > a {
-            display: block;
-            padding: 12px 20px;
-            font-size: 15px;
-            line-height: 25px;
-            color: #fff;
-            text-decoration: none;
-            border-bottom: 1px solid #222;
-            background-color: #111;
-        }
-
-        .navi > li > a:hover, .sidebar .navi > li.open > a {
-            border-bottom: 1px solid #222;
-            background-color: #222;
-            color: #fff;
-        }
-
-        .navi > li.nlightblue > a:hover,
-        .navi > li.open.nlightblue > a,
-        .navi > li.current.nlightblue > a {
-            background: $color_azul_claro !important;
-            -webkit-transition: background 0.5s ease;
-            -moz-transition: background 0.5s ease;
-            -o-transition: background 0.5s ease;
-            transition: background 0.5s ease;
-        }
-
-        .navi > li.nblue > a:hover,
-        .navi > li.open.nblue > a,
-        .navi > li.current.nblue > a {
-            background: $color_azul !important;
-            -webkit-transition: background 0.5s ease;
-            -moz-transition: background 0.5s ease;
-            -o-transition: background 0.5s ease;
-            transition: background 0.5s ease;
-        }
-
-        .navi > li.ngreen > a:hover,
-        .navi > li.open.ngreen > a,
-        .navi > li.current.ngreen > a {
-            background: $color_verde !important;
-            -webkit-transition: background 0.5s ease;
-            -moz-transition: background 0.5s ease;
-            -o-transition: background 0.5s ease;
-            transition: background 0.5s ease;
-        }
-
-        .navi > li.norange > a:hover,
-        .navi > li.open.norange > a,
-        .navi > li.current.norange > a {
-            background: $color_alerta !important;
-            -webkit-transition: background 0.5s ease;
-            -moz-transition: background 0.5s ease;
-            -o-transition: background 0.5s ease;
-            transition: background 0.5s ease;
-        }
-
-        .navi > li.nred > a:hover,
-        .navi > li.open.nred > a,
-        .navi > li.current.nred > a {
-            background: $color_rojo !important;
-            -webkit-transition: background 0.5s ease;
-            -moz-transition: background 0.5s ease;
-            -o-transition: background 0.5s ease;
-            transition: background 0.5s ease;
-        }
-
-        .navi > li.nviolet > a:hover,
-        .navi > li.open.nviolet > a,
-        .navi > li.current.nviolet > a {
-            background: $color_violeta !important;
-            -webkit-transition: background 0.5s ease;
-            -moz-transition: background 0.5s ease;
-            -o-transition: background 0.5s ease;
-            transition: background 0.5s ease;
-        }
-
-        /* Sidebar dropdown */
-
-        .sidebar-dropdown* {
-            text-decoration: none;
-        }
-
-        .sidebar-dropdown {
-            display: none;
-
-            a {
-                color: #ddd;
-                background-color: #343434;
-                padding: 6px;
-                text-transform: uppercase;
-                text-align: center;
-                font-size: 13px;
-                display: block;
-                border-top: 1px solid #666;
-                border-bottom: 1px solid #333;
-            }
-
-            a:hover {
-                text-decoration: none;
-            }
-        }
-
-        /* Sidebar widget */
-
-        .sidebar-widget {
-            padding: 10px 5px;
-        }
-
-        .ui-datepicker {
-            width: 95%;
-            margin: 0 auto;
-            background: #111;
-            color: #888;
-            border: 0;
-            padding: 0;
-        }
-
-        .ui-datepicker-header {
-            background: #222;
-            border: 1px solid #212121;
-        }
-
-        .ui-datepicker-prev:hover {
-            background: transparent;
-            border: 0;
-            top: 2px !important;
-            left: 2px !important;
-        }
-
-        .ui-datepicker-next:hover {
-            background: transparent;
-            border: 0;
-            top: 2px !important;
-            right: 2px !important;
-        }
-
-        .ui-state-default {
-            background: #222;
-            border: 0;
-            text-align: center;
-            color: #ccc;
-
-            :hover {
-                background: #282828;
-                color: #999;
-            }
-        }
-
-        .ui-state-hightlight, .sidebar .ui-state-active {
-            background: #444;
-        }
-    }
-
 
 /* ==========================================================================
    Css para el section
@@ -318,7 +35,6 @@
     main{
         background-color: $color_gris_oscuro;
         height: 100%;
-        padding: $padding_size / 2;
         width: 100%;
     }
 
@@ -327,7 +43,22 @@
         background-color: $color_gris_oscuro;
         padding: $padding_size;
         @include border-invisible(2px);
-        @include responsive-layout(800px, 100%);
+
+        @include mq-phone-width{
+            @include responsive-layout(auto, 100%);    
+        }
+
+        @include mq-tablet-width{
+            @include responsive-layout(400px, 100%);    
+        }
+
+        @include mq-desktop-width{
+            @include responsive-layout(600px, 100%);    
+        }
+
+        @include mq-panoramic-desktop-width{
+            @include responsive-layout(800px, 100%);    
+        }
     }
 
 /* ==========================================================================
@@ -340,6 +71,7 @@
         background-image: url('../../images/pantalla-carga.png');
         background-size: auto;
         background-position: center;
+
         margin-left: auto;
         margin-right: auto;
         text-align: center;
