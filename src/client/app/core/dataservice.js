@@ -20,7 +20,8 @@
   /* @ngInject */
   function dataservice($http, $q, exception, logger) {
     var service = {
-      sendMail: sendMail
+      sendMail: sendMail,
+      signUp: signUp
     };
 
     return service;
@@ -60,7 +61,7 @@
      * 
      */
 
-    function signup(userData) {
+    function signUp(userData) {
       return $http.post('/api/signup', userData)
           .then(success)
           .catch(fail);

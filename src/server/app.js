@@ -20,6 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+
+
+require('./config/passport.js')(passport);
+
 //Se importa archivo que a su vez importa los archivos de rutas de cada módulo
 require('./config/routes').init(app);
 

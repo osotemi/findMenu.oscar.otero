@@ -15,14 +15,14 @@ module.exports = function(passport) {
         done(null, user);
     });
 
-    passport.use('local-login', new LocalStrategy( {
+    passport.use('local-signup', new localStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField: 'user',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
 
-        function(username, password, done) {
+        function(req, user, password, done) {
             mySql.countUser(user, function (rows) {
 
                 if (rows[0].userCount >= 1) {

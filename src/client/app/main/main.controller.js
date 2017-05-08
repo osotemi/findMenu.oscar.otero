@@ -9,7 +9,7 @@
   /* @ngInject */
   function MainController($q, $state, dataservice, logger, $translate, $translatePartialLoader) {
     var vm = this;
-    vm.singInOnClick = singInOnClick();
+    vm.singInOnClick = singInOnClick;
     vm.title = 'Main';
     $translatePartialLoader.addPart('main');
     $translate.refresh();

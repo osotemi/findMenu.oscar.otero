@@ -105,9 +105,20 @@
    }
 
    .button-default{
+        @include border-radius(1px);
         align-self: center;
+        color: $color_gris_oscuro;
+        font-size: $font_size * 1.5;
+        padding-bottom: 0.25em;
+        padding-top: 0.25em;
         margin-bottom: 5%;
         width: 90%;
+
+        &:hover{
+            background-color: $color_blanco;
+            color: $color_verde;
+            border: 5px solid $color_verde;
+        }
    }
 
 /* ==========================================================================

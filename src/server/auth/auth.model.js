@@ -1,6 +1,6 @@
 'use strict';
 
-var mySql = require('../config/config.db');
+var mySql = require('../config/config.db.js');
 
 var authModel = {};
 

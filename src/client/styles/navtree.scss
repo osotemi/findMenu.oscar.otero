@@ -20,11 +20,12 @@
         
         #btn-burger {
             align-self: left;
-            color: $color_amarillo;
+            color: $color_blanco;
             margin-left: $padding_size / 2;
             background-color: $color_gris_oscuro;
             border: $border_size solid $color_gris_oscuro;
-            
+            font-size: $font_size * 2;
+
             @include mq-desktop-width{
                 display: none;    
             }
@@ -36,10 +37,13 @@
         }
 
         .navtree{
-            background-color: #CE342B;
             @include responsive-layout(800px, 10%);
             width: 100%;
             padding: 1em;
+            
+            .navbar-logo {
+                color: $color_blanco;
+            }
         }
 
         .menu {
@@ -49,7 +53,6 @@
             width: 100%;
             float: left; /* Desplazamos el nav hacia la izquierda */
             
-
             ul {
                 list-style: none;
                 -webkit-margin-before: 0em;
@@ -64,6 +67,7 @@
                     
                     a {
                         padding-right: $padding_size * 2;
+                        color: $color_gris_oscuro;
                     }
 
                     .active a {

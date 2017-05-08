@@ -3,19 +3,19 @@
 
   angular
     .module('app.auth')
-    .controller('AuthController', MainController);
+    .controller('AuthController', AuthController);
 
-  MainController.$inject = ['$q', '$scope', 'dataservice', 'logger', '$translate', '$translatePartialLoader', '$uibModal'];
+  AuthController.$inject = ['$q', '$scope', 'dataservice', 'logger', '$translate', '$translatePartialLoader', '$uibModal', '$timeout'];
   /* @ngInject */
-  function MainController($q, $scope, dataservice, logger, $translate, $translatePartialLoader, $uibModal) {
+  function AuthController($q, $scope, dataservice, logger, $translate, $translatePartialLoader, $uibModal, $timeout) {
     var vm = this;
     vm.title = 'Authentication';
     vm.inputUser = '';
     vm.inputEmail = '';
     vm.inputPass = '';
     vm.inputPass2 = '';
-    vm.submitSignup = SubmitSignup;
-    vm.openSinginModal = openSinginModal;
+    vm.submitSignup = submitSignup;
+    vm.openSingInModal = openSingInModal;
           
     $translatePartialLoader.addPart('auth');
     $translate.refresh();
@@ -32,13 +32,14 @@
     }
 
     /* Email singup */
-    function openSinginModal() {
+    function openSingInModal() {
+        console.log('Abriendo modal');
         var modalInstance = $uibModal.open({
             animation: 'true',
-            templateUrl: 'app/auth/auth-singup-modal.html',
-            controller: 'MainController',
+            controller: 'AuthController',
             controllerAs: 'vm',
-            size: 'lg'
+            size: 'lg',
+            templateUrl: 'app/auth/auth-singup-modal.html'
         });
     }
 
@@ -59,7 +60,7 @@
           };
 
           var dataUserJSON = JSON.stringify(data);
-          dataservice.signup(dataUserJSON).then(function (response) {
+          dataservice.signUp(dataUserJSON).then(function (response) {
               if (response.data === true) {
                   $timeout(function () {                           
                       logger.success('Usuario introducido');
