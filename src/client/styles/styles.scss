@@ -32,31 +32,31 @@
 /* ==========================================================================
    Css para el section
    ========================================================================== */
-    main{
+    main {
         background-color: $color_gris_oscuro;
         height: 100%;
         width: 100%;
     }
 
-    section{
+    section {
         display: block;
         background-color: $color_gris_oscuro;
         padding: $padding_size;
-        @include border-invisible(2px);
+        @include border($border_size, transparent);
 
-        @include mq-phone-width{
+        @include mq-phone-width {
             @include responsive-layout(auto, 100%);    
         }
 
-        @include mq-tablet-width{
+        @include mq-tablet-width {
             @include responsive-layout(400px, 100%);    
         }
 
-        @include mq-desktop-width{
+        @include mq-desktop-width {
             @include responsive-layout(600px, 100%);    
         }
 
-        @include mq-panoramic-desktop-width{
+        @include mq-panoramic-desktop-width {
             @include responsive-layout(800px, 100%);    
         }
     }
@@ -65,13 +65,7 @@
    Css para el main section
    ========================================================================== */
    .base-section {
-        @include border-radius(1px);
-        background-repeat: no-repeat;
-        //background-origin: border-box;
-        background-image: url('../../images/pantalla-carga.png');
-        background-size: auto;
-        background-position: center;
-
+        @include background-default('../../images/pantalla-carga.png');
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -81,7 +75,7 @@
         @include border-radius(1px);
 
         align-self: center;
-        background-color: $color_gris_transulucido;
+        background-color: $color_gris_translucido;
         height: auto;
         min-height: 40%;
         margin-top: 10%;
@@ -101,10 +95,12 @@
             font-size: 3em;
             font-weight: bold;
             padding: 5%;
+            text-shadow: 0px 0px 9px $color_blanco;
         }
    }
 
    .button-default{
+        @include border($button_border_size, $color_blanco);
         @include border-radius(1px);
         align-self: center;
         color: $color_gris_oscuro;
@@ -113,11 +109,12 @@
         padding-top: 0.25em;
         margin-bottom: 5%;
         width: 90%;
+        
 
         &:hover{
             background-color: $color_blanco;
             color: $color_verde;
-            border: 5px solid $color_verde;
+            border: $button_border_size solid $color_verde;
         }
    }
 

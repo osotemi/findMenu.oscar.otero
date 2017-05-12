@@ -2,11 +2,33 @@
    SASS MIXIN
    ========================================================================== */
 /* ==========================================================================
+   SASS MIXIN
+   ========================================================================== */
+
+   @mixin background-default($image) {
+        @include border-left-right(1px);
+        
+        background-repeat: no-repeat;
+        //background-origin: border-box;
+        background-image: url($image);
+        background-size: auto;
+        background-position: center;
+   }
+
+/* ==========================================================================
    BORDER
    ========================================================================== */    
     
+    @mixin border-left-right($size) {
+        border-left: $size solid $color_gris;
+        border-right: $size solid $color_gris;
+    }
     
-    @mixin border-invisible($size) {
+    @mixin border($size, $color) {
+        border: $size solid $color;
+    }
+
+    @mixin border-bottom-green($size) {
         border-color: transparent;
         border-bottom: $size solid $color_verde;
     }
@@ -35,6 +57,18 @@
 /* ==========================================================================
    BUTTONS
    ========================================================================== */
+
+   @mixin btn-nav {
+        background-color: $color_gris_oscuro;
+        border: $border_size solid $color_gris_oscuro;
+        color: $color_blanco;
+        font-size: $font_size * 2;
+        margin-left: $padding_size / 2;
+        &:hover{
+            text-decoration: none;
+            color: $color_verde;
+        }   
+   }
 
    @mixin btn-social($backgroundColor, $backgroundImg) {
         background-color: $backgroundColor;

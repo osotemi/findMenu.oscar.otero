@@ -12,42 +12,59 @@
     }
 
     nav {
-        background: none;
+        @include border-left-right(1px);
+        @include responsive-layout(auto, 10%);
+        background-image: url('../../images/title-findmenu.svg');
+        background-position: 50% 0;
+        background-repeat: no-repeat ;
         flex-direction: column;
         display: flex;
         align-items: center;
-        @include responsive-layout(auto, 10%);
         
-        #btn-burger {
-            align-self: left;
-            color: $color_blanco;
-            margin-left: $padding_size / 2;
-            background-color: $color_gris_oscuro;
-            border: $border_size solid $color_gris_oscuro;
-            font-size: $font_size * 2;
-
-            @include mq-desktop-width{
-                display: none;    
-            }
-
-            &:hover{
-                text-decoration:none;
-                color: $color_verde;
-            }
-        }
-
         .navtree{
+            @include border-bottom-green($border_size);
             @include responsive-layout(800px, 10%);
             width: 100%;
-            padding: 1em;
-            
-            .navbar-logo {
-                color: $color_blanco;
+            ul {
+                width: 50%;
+                li {
+                    display: block !important;
+
+                    #btn-burger {
+                        align-self: left;
+                        @include btn-nav;
+
+                        @include mq-desktop-width{
+                            display: none;    
+                        }
+                    }
+
+                    #btn-translate {
+                        @include btn-nav;
+                    }
+
+                    #btn-settings {
+                        @include btn-nav;
+                    }
+
+                    #btn-login {
+                        @include btn-nav;
+                    }
+
+                    #btn-logout {
+                        @include btn-nav;
+                    }
+
+                    .btn-nav-right {
+                        float: right;
+                        width: 40%;
+                    }
+                }
             }
         }
 
         .menu {
-            @include border-invisible(2px);
+            @include border($border_size, transparent);
             @include responsive-layout(800px, 10%);
             background-color: $color_alerta;
             width: 100%;
@@ -68,24 +85,25 @@
                     a {
                         padding-right: $padding_size * 2;
                         color: $color_gris_oscuro;
+
+                        &:active {
+                        color: $color_verde;
+                        }
+
+                        &:hover {
+                            color: $color_gris_claro;
+                            text-decoration: none;
+                        }
                     }
 
-                    .active a {
-                        color: $color_verde !important;
+                    &:hover {
+                        box-shadow:
+                        0px 1px $color_gris_claro,
+                        0px 2px $color_gris_claro,
+                        0px 3px $color_gris_claro;
+                        -webkit-transform: translateY(-3px);
+                        transform: translateY(-3px);
                     }
-                    a:hover {
-                        color: $color_gris_claro;
-                        text-decoration: none;
-                    }
-                }
-
-                li:hover {
-                    box-shadow:
-                    1px 1px $color_gris_claro,
-                    2px 2px $color_gris_claro,
-                    3px 3px $color_gris_claro;
-                    -webkit-transform: translateX(-3px);
-                    transform: translateX(-3px);
                 }
             }
         }

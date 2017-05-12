@@ -7,25 +7,25 @@
     Social buttons
     ========================================================================== */
     #btn-facebook {
-        @include border-radius(1px);
+        @include border($button_border_size, $color_azul_facebook);
         @include btn-social($color_azul_facebook, '../../images/icons/icons-Facebook.svg');
-        padding: 5px;
+        padding: $button_border_size;
     }
 
     #btn-twitter {
-        @include border-radius(1px);
+        @include border($button_border_size, $color_rojo_google);
         @include btn-social($color_rojo_google, '../../images/icons/icons-GooglePlus.svg');
-        padding: 5px;
+        padding: $button_border_size;
     }
 
     #btn-google {
-        @include border-radius(1px);
+        @include border($button_border_size, $color_azul_twitter);
         @include btn-social($color_azul_twitter, '../../images/icons/icons-Twitter.svg');
-        padding: 5px;
+        padding: $button_border_size;
     }
 
     #btn-email {
-        @include border-radius(1px);
+        @include border($button_border_size, $color_verde_mail);
         @include btn-social($color_verde_mail, '../../images/icons/icons-email.svg');
-        padding: 5px;
+        padding: $button_border_size;
     }
