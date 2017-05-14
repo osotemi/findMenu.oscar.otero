@@ -3,6 +3,7 @@
 
 @import "auth.scss";
 @import "navtree.scss";
+@import "footer.scss";
 
 
 //@import url('https://fonts.googleapis.com/css?family=Sarina');
@@ -66,9 +67,6 @@
    ========================================================================== */
    .base-section {
         @include background-default('../../images/pantalla-carga.png');
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
    }
 
    .base-article {
@@ -117,18 +115,6 @@
             border: $button_border_size solid $color_verde;
         }
    }
-
-/* ==========================================================================
-   Css footer
-   ========================================================================== */
-    footer {
-        color: $color_blanco;
-        flex: 2 1 auto;
-        align-self: flex-end;
-        background-color: $color_gris_claro;
-        text-align: center;
-        max-height: 10%;
-    }
 
 /* ==========================================================================
    Css animaciones

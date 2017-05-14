@@ -1,30 +1,20 @@
 <nav role="navigation" ng-controller="NavtreeController as vm">
     <span class="navtree">
-        <ul id="topnav" class="nav nav-pills">
-            <li>
-                <button id="btn-burger" type="button" ng-click="vm.btnHamburguerOnClick()" ng-hide="vm.btnBurgerCollapsed" class="fa fa-bars "></button>
-            </li>
-            <li>
-                <button id="btn-settings" type="button" ng-click="" aria-hidden="true">
-                    <span class="fa fa-cog"></span>
-                </button>
-            </li>
-            <li class="dropdown nav navbar-nav pull-left">
-            <button id="btn-translate" type="button" data-toggle="dropdown" class="fa fa-flag" ></button>
+        <ul id="topnav" class="nav">
+            <li class="dropdown nav navbar-nav">
+                <button id="btn-login" type="button" ng-click="" ng-hide="true" class="fa fa-sign-in" aria-hidden="true">Log In</button>
+                <button id="btn-logout" type="button" ng-click="" class="fa fa-sign-out" aria-hidden="true">Log Out</button>
+            </li>>
+            <li class="box-btn-menu">
+                <button id="btn-translate" type="button" data-toggle="dropdown" class="fa fa-flag" ></button>
                 <ul class="dropdown-menu" role="menu">
                     <li> <a ng-click="vm.setLang('ca')" translate="CATALA"></a></li>
+                    <li> <a></a></li>
                     <li> <a ng-click="vm.setLang('gl')" translate="GALICIAN"></a></li>
                     <li> <a ng-click="vm.setLang('en')" translate="ENGLISH"></a></li>
                     <li> <a ng-click="vm.setLang('es')" translate="SPANISH"></a></li>
                 </ul>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <button id="btn-login" type="button" ng-click="" ng-hide="true" class="fa fa-sign-in pull-right" aria-hidden="true">Log In</button>
-            </li>
-            <li>
-                <button id="btn-logout" type="button" ng-click="" class="fa fa-sign-out pull-right" aria-hidden="true">Log Out</button>
+                <button id="btn-burger" type="button" ng-click="vm.btnHamburguerOnClick()" ng-hide="vm.btnBurgerCollapsed" class="fa fa-bars "></button>
             </li>
         </ul>
     </span>

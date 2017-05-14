@@ -32,7 +32,7 @@
         border-color: transparent;
         border-bottom: $size solid $color_verde;
     }
-
+    
     @mixin border-radius($size) {
         border: $size solid $color_gris;
         -moz-border-radius: 0.5em;
@@ -40,6 +40,10 @@
         border-radius: 0.5em;
     }
 
+    @mixin border-top-green($size) {
+        border-color: transparent;
+        border-top: $size solid $color_verde;
+    }
 
 /* ==========================================================================
    SIZES
@@ -52,6 +56,9 @@
         -moz-max-width: $max;
         -webkit-height:  $height;
         -webkit-max-width: $max;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
 
 /* ==========================================================================
@@ -94,7 +101,7 @@
     }
 
     @mixin mq-desktop-width {
-        @media (min-width: #{$tablet-width}) and (max-width: #{desktop-width - 1px}) {
+        @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
             @content;
         }
     }

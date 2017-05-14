@@ -1,0 +1,77 @@
+/*  ==========================================================================
+    FOOTER STYLE
+    ========================================================================== */
+
+footer {
+     @include border-top-green($border_size);
+     align-self: flex-end;
+     color: #FFF;
+     
+     max-height: 10%;
+}
+
+.footer {
+        background-color: $color_gris_oscuro;
+        width: 100%;
+        flex: 3 0 auto;
+        flex-direction: column;
+        display: flex;
+        text-align: center;
+
+        .box-copyright {
+            @include border-left-right(1px);
+            margin-left: auto;
+            margin-right: auto;
+            @media (min-width: #{$desktop-width} - 1px) {
+                float: left;
+                padding: 1.5em;
+                width: 45%;
+                address {
+                    width: 65%;
+                }
+                .logo {
+                    float: right;
+                }
+            }
+            .logo {
+                height: 8em;
+                width: 8em;
+            }
+        }
+
+        .box_logos{
+            @media (min-width: #{$desktop-width} - 1px) {
+                float: right;
+                width: 50%;
+            }
+            *, *:before, *:after {
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .img {
+                display: inline-flex;
+                width: 24%;
+            }
+        }
+    }
+    
+    .navigation, .social-list {
+        float: none;
+    }
+
+    .widget-title, a {
+        font-size: $font_size;
+        font-weight: 700;
+        letter-spacing: 0.2rem;
+        color: $color_gris;
+        font-family: 'Satisfy', sans-serif;
+        font-size: 1em;
+        color: $color_verde;
+    }
+
+    .widget, address {
+        color: $color_gris;
+        text-transform: none;
+        font-style: normal;
+    }
