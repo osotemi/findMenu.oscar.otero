@@ -58,8 +58,9 @@
               'password': vm.inputPass,
               'usertype': 'guest'
           };
-
+          
           var dataUserJSON = JSON.stringify(data);
+          Console.log(dataUserJSON);
           dataservice.signUp(dataUserJSON).then(function (response) {
               if (response.data === true) {
                   $timeout(function () {                           
