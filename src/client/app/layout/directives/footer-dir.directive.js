@@ -11,7 +11,7 @@
             restrict: 'E',
             templateUrl: 'app/layout/directives/footer-dir.html'
         };
-
+        
         return directive;
     }
 })();

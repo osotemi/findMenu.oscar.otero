@@ -5,7 +5,7 @@
     .module('app.main')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$q', '$state', 'dataservice', 'logger', '$translate', '$translatePartialLoader',];
+  MainController.$inject = ['$q', '$state', 'dataservice', 'logger', '$translate', '$translatePartialLoader'];
   /* @ngInject */
   function MainController($q, $state, dataservice, logger, $translate, $translatePartialLoader) {
     var vm = this;

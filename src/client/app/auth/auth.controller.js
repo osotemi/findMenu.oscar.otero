@@ -14,9 +14,11 @@
     vm.inputEmail = '';
     vm.inputPass = '';
     vm.inputPass2 = '';
+    vm.closeModal = closeModal;
     vm.submitSignup = submitSignup;
     vm.openSingInModal = openSingInModal;
-          
+
+
     $translatePartialLoader.addPart('auth');
     $translate.refresh();
 
@@ -33,17 +35,16 @@
 
     /* Email singup */
     function openSingInModal() {
-        console.log('Abriendo modal');
         var modalInstance = $uibModal.open({
             animation: 'true',
-            controller: 'AuthController',
-            controllerAs: 'vm',
+            scope: $scope,
             size: 'lg',
             templateUrl: 'app/auth/auth-singup-modal.html'
         });
     }
 
     function closeModal() {
+        console.log('Close modal');
         $uibModal.dismiss('cancel');
     }
 
@@ -56,28 +57,30 @@
               'user': vm.inputUser,
               'email': vm.inputEmail,
               'password': vm.inputPass,
-              'usertype': 'guest'
+              'userType': 'guest'
           };
           
           var dataUserJSON = JSON.stringify(data);
-          Console.log(dataUserJSON);
+          console.log("Datos a enviar " + dataUserJSON);
           dataservice.signUp(dataUserJSON).then(function (response) {
               if (response.data === true) {
                   $timeout(function () {                           
                       logger.success('Usuario introducido');
-                      $state.go('home');             
+                      $uibModal.dismiss('cancel');
+                      $state.go('login');             
                   }, 3000);
               } else {
                   if (response.data === 'Error name') {
-                      logger.warning('Ya existe un usuario con ese nombre');
+                      logger.warning(JSON.stringify(response));
                       $timeout(function () {
-                          vm.resultMessageFail = '';
+                          vm.resultMessageFail = 'Ya existe un usuario con ese email';
                       }, 3000);
 
                   } else if (response.data === 'err') {
-                      logger.error('Error en la consulta a base de datos');
+                      logger.warning(JSON.stringify(response));
+                      //logger.error('Error en la consulta a base de datos');
                       $timeout(function () {
-                          vm.resultMessageFail = '';
+                          vm.resultMessageFail = 'Error en la consulta a base de datos';
                       }, 3000);
                   }
               }

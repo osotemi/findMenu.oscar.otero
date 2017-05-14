@@ -1,7 +1,7 @@
 'use strict';
 
 var passport = require('passport');
-var mySql = require('../auth/auth.model.js');
+var mySql = require('../auth/auth.model');
 
 exports.signup = function (req, res, next) {
     passport.authenticate('local-signup', function (err, user, info) {

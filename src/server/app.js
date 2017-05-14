@@ -4,6 +4,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var cors = require('cors');
 var dotenv = require('dotenv');
 var environment = process.env.NODE_ENV;
 var favicon = require('serve-favicon');
@@ -11,6 +13,7 @@ var four0four = require('./utils/404')();
 var logger = require('morgan');
 var passport = require('passport');
 var port = process.env.PORT || 8001;
+var session = require('express-session');
 
 //Cargamos la key desde config/.env
 dotenv.load({ path: './src/server/config/.env'});
@@ -20,10 +23,21 @@ app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
+app.use(cookieParser());//Necesario para definir connect.sid y solucionar TypeError: Cannot read property 'connect.sid' of undefined
+app.use(cors());
 
 
 
 require('./config/passport.js')(passport);
+//Configuración de la sesión para Passport
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'findmenuangularnodejs'
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //Se importa archivo que a su vez importa los archivos de rutas de cada módulo
 require('./config/routes').init(app);

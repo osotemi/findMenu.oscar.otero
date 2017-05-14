@@ -5,7 +5,7 @@
     .module('app.layout')
     .controller('ShellController', ShellController);
 
-  ShellController.$inject = ['$log','$rootScope', '$scope', '$timeout', 'config', 'cookies', 'logger', 'toastr'];
+  ShellController.$inject = ['$log','$rootScope', '$scope', '$timeout', 'config', 'cookies', 'logger', 'toastr', ];
   /* @ngInject */
   function ShellController($log, $rootScope, $scope, $timeout, config, cookies, logger, toastr) {
     var vm = this;

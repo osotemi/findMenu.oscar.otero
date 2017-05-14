@@ -1,6 +1,5 @@
 'use strict';
-
-
+    
 var Controller = require('./auth.controller');
 
 module.exports = function (app, passport) {

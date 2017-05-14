@@ -45,19 +45,23 @@
           .catch(fail);
 
       function success() {
+          console.log("sendMail success " + response.data);
           return true;
       }
 
       function fail(e) {
+          console.log("sendMail success " + response.data);
           return exception.catcher('XHR Failed for sendMail')(e);
       }
     }
 
     /**Llamada a servidor enviando datos para dar de alta un nuevo usuario
      * 
-     * @param {Object} userData - Datos del ususario
-     * @param {String} userData - Dirección de email del remitente
-     * 
+     * @param {Object} userData - Datos del nuevo usario
+     * @param {String} userData.user - Nombre del nuevo usuario
+     * @param {String} userData.email - Email del nuevo usuario
+     * @param {String} userData.password - Contraseña del nuevo usuario
+     * @param {String} userData.userType - Tipo de usuario del nuevo usuario
      * 
      */
 

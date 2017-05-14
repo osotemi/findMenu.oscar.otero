@@ -1,0 +1,41 @@
+<section id="contact-view" class="base-section">
+    <article id="contact-article" class="base-article">
+        <h2  class="contact-title" translate="CONTACT_US">CONTACT_US</h2>
+        <form class="signup_form" name="signup_form"  novalidate>
+                
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input required type="email"  name="inputEmail" ng-model="vm.inputEmail"
+                           minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                    <div ng-messages="signup_form.inputEmail.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                            Your email must be between 10 and 100 characters long and look like an e-mail address.
+                        </div>
+                    </div>
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                    <label>Asunto</label>
+                    <input required name="inputSubject" ng-model="vm.inputSubject">
+                    <div ng-messages="signup_form.inputSubject.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Mensaje</label>
+                    <input required name="inputMesage" ng-model="vm.inputMessage">
+                    <div ng-messages="signup_form.inputMessage.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                
+                <br>
+                <button class="btn btn-lg btn-primary btn-block"
+                        type="submit"
+                        ng-disabled="signup_form.$invalid" ng-click="vm.submitSignup()">Enviar</button>
+                <div id="resultMessageFail" class="msg_error">{{vm.resultMessageFail}}</div>
+            </form>
+    </article>
+</section>

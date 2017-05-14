@@ -1,5 +1,6 @@
 // load all the things we need
 var localStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt-nodejs');
 
 // load up the auth model
 var mySql = require('../auth/auth.model.js');
@@ -24,22 +25,21 @@ module.exports = function(passport) {
 
         function(req, user, password, done) {
             mySql.countUser(user, function (rows) {
-
+                //console.log(" En local-signup " + JSON.stringify(user) + 'rows: ' + rows[0].userCount);
                 if (rows[0].userCount >= 1) {
-                    return done(null, false, 'el nombre de usuario ya existe');
+                    return done(null, false, 'El nombre de usuario ya existe');
                 } else {
                     // if there is no user with that username
                     // create the user
                     var newUser = {
-                        user: user,
-                        password: bcrypt.hashSync(password, null, null),
-                        email: req.body.email,
-                        usertype: req.body.usertype,
-                        name: user,
-                        avatar: ''   
+                        userName: user,
+                        userPassword: bcrypt.hashSync(password, null, null),
+                        userEmail: req.body.email,
+                        userTypeOf: req.body.userType,
+                        userAvatar: ''   
                     };
-
-                    mySql.insertUser(newUser, function (rows) {
+                    console.log("local-signup newUser" + JSON.stringify( newUser));
+                    mySql.setUser(newUser, function (rows) {
                         if (rows) {
                             return done(null, user);
                         }

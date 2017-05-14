@@ -4,6 +4,7 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4 signup-well">
             <div class="modal-header">
             <h1><C>Unete a findMenu</C></h1>
+            <button class="fa fa-window-close pull-right" ng-click="vm.closeModal"  aria-hidden="true"></button>
         </div> 
             <br>
             <form class="signup_form" name="signup_form"  novalidate>
@@ -54,7 +55,7 @@
                 <br>
                 <button class="btn btn-lg btn-primary btn-block"
                         type="submit"
-                        ng-disabled="signup_form.$invalid" ng-click="vm.SubmitSignup()">Enviar</button>
+                        ng-disabled="signup_form.$invalid" ng-click="vm.submitSignup()">Enviar</button>
                 <div id="resultMessageFail" class="msg_error">{{vm.resultMessageFail}}</div>
             </form>
         </div>
