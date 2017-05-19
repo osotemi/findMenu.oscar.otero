@@ -45,12 +45,12 @@
           .catch(fail);
 
       function success() {
-          console.log("sendMail success " + response.data);
+          console.log("sendMail success ");
           return true;
       }
 
       function fail(e) {
-          console.log("sendMail success " + response.data);
+          console.log("sendMail fail " + e);
           return exception.catcher('XHR Failed for sendMail')(e);
       }
     }
@@ -67,6 +67,20 @@
 
     function signUp(userData) {
       return $http.post('/api/signup', userData)
+          .then(success)
+          .catch(fail);
+      //si devuelve promesa ejecuta success
+      function success(response) {
+          return response;
+      }
+      //si no ejecuta fail
+      function fail(e) {
+          return exception.catcher('XHR Failed for signup')(e);
+      }
+    }
+
+    function logIn(userData) {
+      return $http.post('/api/login', userData)
           .then(success)
           .catch(fail);
       //si devuelve promesa ejecuta success

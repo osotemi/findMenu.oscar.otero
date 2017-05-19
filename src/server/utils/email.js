@@ -7,7 +7,7 @@ exports.sendEmail = function (req, res) {
     var emailFrom = 'oscarompro@gmail.com';
     var body='';
     //Conseguir sendgridKey y montar transort para email
-    console.log('--> Clavve sendgrid: ' + process.env.sendgridKey);
+    //console.log('--> Clavve sendgrid: ' + process.env.sendgridKey);
     var options = {
         auth: {
             api_key: process.env.sendgridKey
@@ -15,11 +15,24 @@ exports.sendEmail = function (req, res) {
     };
     var mailer = nodemailer.createTransport(sgTransport(options));
     var templateHtml = '';
-    console.log(req.body);
+    console.log('Email - ' + req.body);
 
     switch (req.body.template) {
         case 'toUserTemplate':
             emailTo = req.body.from;
+            body = '<body>' +
+                    '<div id="contact-email">' +
+                    '<div> <h1>Contacto con Findmenu</h1> <h4>Sugerencia: ' + req.body.subject +
+                    '</h4></div>' +
+                    '<p>Sr/Sra: ' + req.body.name + ' Su petición ha sido recibida por'+
+                    'el equipo de Findmenu, en breve responderán por su interés</p>' +
+                    '<p>Puede seguir disfrutando de los servicios de Findmenu pulsando'+
+                    '<a href="http://localhost:3000/">aqu&iacute;</a></p>' +
+                    '</div>' +
+                    ' </body>';
+            break;
+        case 'contactTemplate':
+            emailFrom = req.body.from;
             body = '<body>' +
                     '<div id="contact-email">' +
                     '<div> <h1>Contacto con Findmenu</h1> <h4>Sugerencia: ' + req.body.subject +

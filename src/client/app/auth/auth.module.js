@@ -3,6 +3,7 @@
 
   angular.module('app.auth', [
     'app.core',
+    'app.auth',
     'ui.bootstrap'
   ]);
 

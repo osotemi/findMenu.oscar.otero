@@ -1,0 +1,36 @@
+<div class="contact">
+    <form id="login_form" name="login_form"  novalidate>
+        <div class="modal-header">
+            <h1><C>Iniciar sesión</C></h1>
+        </div>    
+
+        <md-input-container class="md-block">
+            <label>Nombre de usuario</label>
+            <input required name="inputUser" ng-model="vm.inputUser">
+            <div ng-messages="login_form.inputUser.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label>Password</label>
+            <input required ng-minlength="5" ng-maxlength="10" type="password" name="inputPass" ng-model="vm.inputPass">
+            <div ng-messages="login_form.inputPass.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                    The password is required.Password must be at least 5 characters and maximun 10.
+                </div>
+            </div>   
+        </md-input-container>
+        
+        <h2><a href="#" id="linkRest">¿Has olvidado tu contraseña?</a></h2>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block send" type="submit" ng-disabled="login_form.$invalid" ng-click="vm.SubmitLogin()">Sign up</button>
+        <div id="resultMessageFail" class="msg_error">{{vm.resultMessageFail}}</div>
+        <p>¿Eres un nuevo cliente?</p>
+        <hr class="login">
+        <button class="btn btn-lg btn-primary btn-block send" type="button" ng-click="vm.SubmitSignup()">Crea tu cuenta Findmenu</button>
+        <a class="btn btn-block btn-social btn-facebook float" target="_self" href="/auth/facebook"><span class="fa fa-facebook"></span> Sign in with Facebook</a>
+        <a class="btn btn-block btn-social btn-twitter float" target="_self" href="/auth/twitter"><span class="fa fa-twitter"></span> Sign in with Twitter</a>
+        <a class="btn btn-block btn-social btn-odnoklassniki float" target="_self" href="/auth/google"><span class="fa fa-google"></span> Sign in with Google</a>
+    </form>
+</div>
