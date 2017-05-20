@@ -11,7 +11,7 @@ create table COORDINATES (
 
 LOCK TABLES COORDINATES WRITE;
 
-INSERT INTO COORDINATES(`latitude`, `longitude`) VALUES( 38.810291, -0.604304 ), ( 38.818237, -0.605379 ), (38.818841, -0.606853), (38.821203, -0.600466);
+INSERT INTO COORDINATES(`latitude`, `longitude`) VALUES( 38.810291, -0.604304 ), ( 38.818237, -0.605379 ), (38.818841, -0.606853), (38.821203, -0.600466),( 38.818237, -0.605379 ), (38.818841, -0.606853), (38.821203, -0.600466);
 
 UNLOCK TABLES;
 
@@ -33,23 +33,77 @@ create table USERS (
 ) ENGINE=InnoDB AUTO_INCREMENT = 99 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO USERS(`coordinatesId`, `userFacebookId`, `userTwitterId`, `userGooglePlusId`, `userActive`, `userTypeOf`, `userPassword`, `userName`, `userAvatar`,`userEmail`, `userToken`) 
-VALUES  ( 1, 'none', 'none', 'none', false, 'guest', 'none', 'admin', 'none', 'oscar.otero.millan@gmail.com', 'none');
+VALUES  ( 1, 'none', 'none', 'none', false, 'admin', 'none', 'admin', 'none', 'oscar.otero.millan@gmail.com', 'none'),
+		( 2, 'none', 'none', 'none', false, 'sponsor', 'none', 'sponsor', 'none', 'sponsormail@gmail.com', 'none'),
+        ( 3, 'none', 'none', 'none', false, 'offerer', 'none', 'offerer', 'none', 'offerermail@gmail.com', 'none'),
+		( 4, 'none', 'none', 'none', false, 'diner', 'none', 'test user', 'none', 'osblue05@gmail.com', 'none'),
+        ( 5, 'none', 'none', 'none', false, 'diner', 'none', 'test user 2', 'none', 'mail2@gmail.com', 'none'),
+        ( 6, 'none', 'none', 'none', false, 'diner', 'none', 'test user 3', 'none', 'mail305@gmail.com', 'none');
 
 CREATE TABLE FOOD (
-	foodId INTEGER   NOT NULL ,
+	foodId INTEGER NOT NULL AUTO_INCREMENT,
 	foodCoordinatesId INTEGER,
-	foodUserId INTEGER   NOT NULL ,
-	foodPrice FLOAT  DEFAULT 0  ,
-	foodPriceVar1 FLOAT  DEFAULT 0  ,
-	foodPriceVar2 FLOAT  DEFAULT 0  ,
-	foodPrincipalIngredient VARCHAR(45)  DEFAULT "none",
-	foodSecondaryIngredient VARCHAR(45)  DEFAULT "none",
-	foodDrinkIncluded BOOL  DEFAULT 0,
-	foodVariation1 VARCHAR(45)  DEFAULT "none",
+	foodUserId INTEGER NOT NULL ,
+    foodDrinkIncluded BOOL DEFAULT 0,
+    foodName VARCHAR(45),
+	foodPrice FLOAT  DEFAULT 0 ,
+	foodPriceVar1 FLOAT DEFAULT 0 ,
+	foodPriceVar2 FLOAT DEFAULT 0 ,
+	foodPrincipalIngredient VARCHAR(45) DEFAULT "none",
+	foodSecondaryIngredient VARCHAR(45) DEFAULT "none",
+	foodVariation1 VARCHAR(45) DEFAULT "none",
 	primary key(foodId, foodUserId),
     constraint fk_coordinates_id foreign key(foodCoordinatesId) REFERENCES COORDINATES(coordinatesId),
     constraint fk_user_id foreign key(foodUserId) REFERENCES USERS(userId)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO FOOD 
+	SET foodName = 'Bocadillo',
+		foodPrincipalIngredient = 'Bread',
+		foodUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'admin'),
+		foodCoordinatesId = (
+			SELECT coordinatesId 
+			FROM USERS 
+			WHERE userName = 'admin');
+
+INSERT INTO FOOD 
+	SET foodName = 'Pizza de queso',
+		foodPrincipalIngredient = 'pizza',
+		foodUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'sponsor'),
+		foodCoordinatesId = (
+			SELECT coordinatesId 
+			FROM USERS 
+			WHERE userName = 'sponsor');
+            
+INSERT INTO FOOD 
+	SET foodName = 'Mariscada',
+		foodPrincipalIngredient = 'seafood',
+		foodUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'offerer'),
+		foodCoordinatesId = (
+			SELECT coordinatesId 
+			FROM USERS 
+			WHERE userName = 'offerer');
+            
+INSERT INTO FOOD 
+	SET foodName = 'Racion de pulpo',
+		foodPrincipalIngredient = 'osctopus',
+		foodUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'offerer'),
+		foodCoordinatesId = (
+			SELECT coordinatesId 
+			FROM USERS 
+			WHERE userName = 'offerer');
 
 create table FOLLOWING (
 	followUserId integer not null,
@@ -59,6 +113,83 @@ create table FOLLOWING (
     constraint fk_followUser_id foreign key(followUserId) REFERENCES USERS(userId),
     constraint fk_followFood_id foreign key(followFoodId) REFERENCES FOOD(foodId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO FOLLOWING 
+	SET followSince = CURDATE(),
+		followFoodId = (
+			SELECT foodId 
+			FROM FOOD 
+			WHERE foodName = 'Bocadillo'),
+		followUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'test user');
+
+INSERT INTO FOLLOWING 
+	SET followSince = CURDATE(),
+		followFoodId = (
+			SELECT foodId 
+			FROM FOOD 
+			WHERE foodName = 'Bocadillo'),
+		followUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'test user 2');
+
+INSERT INTO FOLLOWING 
+	SET followSince = CURDATE(),
+		followFoodId = (
+			SELECT foodId 
+			FROM FOOD 
+			WHERE foodName = 'Bocadillo'),
+		followUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'test user 3');
+
+INSERT INTO FOLLOWING 
+	SET followSince = CURDATE(),
+		followFoodId = (
+			SELECT foodId 
+			FROM FOOD 
+			WHERE foodName = 'Pizza de queso'),
+		followUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'test user 3');
+            
+INSERT INTO FOLLOWING 
+	SET followSince = CURDATE(),
+		followFoodId = (
+			SELECT foodId 
+			FROM FOOD 
+			WHERE foodName = 'Mariscada'),
+		followUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'test user 3');
+            
+INSERT INTO FOLLOWING 
+	SET followSince = CURDATE(),
+		followFoodId = (
+			SELECT foodId 
+			FROM FOOD 
+			WHERE foodName = 'Mariscada'),
+		followUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'test user 2');
+            
+INSERT INTO FOLLOWING 
+	SET followSince = CURDATE(),
+		followFoodId = (
+			SELECT foodId 
+			FROM FOOD 
+			WHERE foodName = 'Racion de pulpo'),
+		followUserId = (
+			SELECT userId 
+			FROM USERS 
+			WHERE userName = 'test user 2');
 
 create table IMAGES (
 	imageId integer not null,

@@ -1,7 +1,7 @@
-var Product = require( './product.model.js ' );
+var Product = require( './product.model.js' );
 
 exports.getProduct = function( req, res ) {
-    Product.getProduct(
+    Product.getProductMostFollowed(
         function( err, products ) {
             if( err ) {
                 res.send( err );
@@ -9,4 +9,4 @@ exports.getProduct = function( req, res ) {
             res.json( products );
         }
     );
-}
+};

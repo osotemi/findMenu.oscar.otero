@@ -16,13 +16,14 @@
       {
         state: 'product',
         config: {
+          url: '/product',
           templateUrl: 'app/product/product-carrousel.html',
           controller: 'ProductController',
           controllerAs: 'vm',
           title: 'Product View',
           settings: {
-            nav: 3,
-            content: '<i class="fa fa-food"></i> comida'
+            nav: 2,
+            content: '<i class="fa fa-food"></i> Comida'
           }
         }
       }

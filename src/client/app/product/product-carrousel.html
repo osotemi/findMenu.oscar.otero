@@ -1,0 +1,12 @@
+<section id="user-view" class="base-section">
+    <article id = "product-view" >
+        <carrousel interval = "vm.intervalDelay">
+            <slide ng-repeat = "showcase in showcase" active = "showcase.active">
+                <img ng-src = "{{showcase.picture.image}}" active = "picture.active"/>
+                <label> 
+                    <h4>{{showcase.picture.mensaje}}</h4>    
+                <label>
+            </slide>
+        </carrousel>
+    </article>
+</section>

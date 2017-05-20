@@ -11,30 +11,37 @@
         var vm = this;
 
         vm.promises = [];
+        vm.showcase = [];
         vm.userCookie = cookies.GetUser();
 
         activate();
 
         function activate() {
+            
             if(vm.userCookie) {
+                console.log('En if');
                 vm.promises = [ 
-                    getProducts(vm.userCookie.userId)
+                    loadShowcase(vm.userCookie.userId)
                 ];
             }
             else{
                 vm.promises = [ 
-                    getProducts()
+                    loadShowcase(false)
                 ];
             }
 
-            return $q.all(promises).then(function(){
+            return $q.all(vm.promises).then(function(){
                 console.log('Activated Product View');
             });
         }
 
-        function getProducts() {
-
+        function loadShowcase(userId) {
+            console.log('En loadShowcase');
+            return dataservice.getProducts( userId ).then(function( pictures ) {
+                console.log( JSON.stringify( pictures.data ) );
+                vm.showcase = pictures;
+            });
         }
     }
-});
+})();
 

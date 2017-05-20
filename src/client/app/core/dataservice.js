@@ -103,15 +103,17 @@
             .catch(fail);
         }
         else{
-            return $http.post('/api/product')
+            return $http.get('/api/product')
             .then(success)
             .catch(fail);
         }
         function success(response) {
+            console.log('response');
             return response;
         }
 
         function fail(e){
+            console.log('response fail' + e);
             return exception.catcher('XHR Failed for getProducts')(e);
         }    
     }
