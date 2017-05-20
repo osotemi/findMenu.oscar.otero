@@ -1,0 +1,74 @@
+drop database oFindmenu;
+create database if not exists oFindmenu;
+use oFindmenu;
+
+create table COORDINATES (
+	coordinatesId integer auto_increment,
+    latitude float not null,
+	longitude float not null,
+    primary key (coordinatesId)
+) ENGINE=InnoDB AUTO_INCREMENT = 0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+LOCK TABLES COORDINATES WRITE;
+
+INSERT INTO COORDINATES(`latitude`, `longitude`) VALUES( 38.810291, -0.604304 ), ( 38.818237, -0.605379 ), (38.818841, -0.606853), (38.821203, -0.600466);
+
+UNLOCK TABLES;
+
+create table USERS (
+	userId integer not null auto_increment,
+    coordinatesId integer,
+	userFacebookId VARCHAR(45)  DEFAULT NULL,   
+    userTwitterId VARCHAR(45)  DEFAULT NULL,   
+    userGooglePlusId VARCHAR(45)  DEFAULT NULL,   
+    userActive BOOL DEFAULT 0,   
+    userTypeOf VARCHAR(45)  DEFAULT NULL,  
+    userPassword VARCHAR(255)  NOT NULL,   
+    userName VARCHAR(45)  DEFAULT NULL,   
+    userAvatar VARCHAR(255) DEFAULT NULL,   
+    userEmail VARCHAR(100) DEFAULT NULL,
+    userToken VARCHAR(100) DEFAULT NULL, 
+    primary key (userId),
+    constraint fk_id_coordinates foreign key(coordinatesId) REFERENCES COORDINATES(coordinatesId)
+) ENGINE=InnoDB AUTO_INCREMENT = 99 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO USERS(`coordinatesId`, `userFacebookId`, `userTwitterId`, `userGooglePlusId`, `userActive`, `userTypeOf`, `userPassword`, `userName`, `userAvatar`,`userEmail`, `userToken`) 
+VALUES  ( 1, 'none', 'none', 'none', false, 'guest', 'none', 'admin', 'none', 'oscar.otero.millan@gmail.com', 'none');
+
+CREATE TABLE FOOD (
+	foodId INTEGER   NOT NULL ,
+	foodCoordinatesId INTEGER,
+	foodUserId INTEGER   NOT NULL ,
+	foodPrice FLOAT  DEFAULT 0  ,
+	foodPriceVar1 FLOAT  DEFAULT 0  ,
+	foodPriceVar2 FLOAT  DEFAULT 0  ,
+	foodPrincipalIngredient VARCHAR(45)  DEFAULT "none",
+	foodSecondaryIngredient VARCHAR(45)  DEFAULT "none",
+	foodDrinkIncluded BOOL  DEFAULT 0,
+	foodVariation1 VARCHAR(45)  DEFAULT "none",
+	primary key(foodId, foodUserId),
+    constraint fk_coordinates_id foreign key(foodCoordinatesId) REFERENCES COORDINATES(coordinatesId),
+    constraint fk_user_id foreign key(foodUserId) REFERENCES USERS(userId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+create table FOLLOWING (
+	followUserId integer not null,
+    followFoodId integer not null,
+    followSince date not null,
+    primary key( followUserId, followFoodId ),
+    constraint fk_followUser_id foreign key(followUserId) REFERENCES USERS(userId),
+    constraint fk_followFood_id foreign key(followFoodId) REFERENCES FOOD(foodId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+create table IMAGES (
+	imageId integer not null,
+    imageFoodId integer not null,
+    imageUserId integer not null,
+    imageName varchar(30),
+    imagePath varchar(30) not null,
+    imageAdded date,
+    imageDescription varchar(50),
+    primary key( imageId, imageFoodId ),
+    constraint fk_imageFood_id foreign key(imageFoodId) REFERENCES FOOD(foodId),
+    constraint fk_imageUser_id foreign key(imageUserId) REFERENCES USERS(userId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;

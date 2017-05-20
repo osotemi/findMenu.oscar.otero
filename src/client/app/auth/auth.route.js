@@ -17,7 +17,7 @@
         state: 'auth',
         config: {
           url: '/auth',
-          templateUrl: 'app/auth/login.html',
+          templateUrl: 'app/auth/singup.html',
           controller: 'AuthController',
           controllerAs: 'vm',
           title: 'Authentication',
@@ -27,7 +27,7 @@
           state: 'signup',
           config: {
               url: '/auth/signup',
-              templateUrl: 'app/auth/auth-singup-modal.html',
+              templateUrl: 'app/auth/singup-auth-modal.html',
               controller: 'AuthController',
               controllerAs: 'vm',
               title: 'Signup'

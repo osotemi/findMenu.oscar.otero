@@ -20,8 +20,10 @@
   /* @ngInject */
   function dataservice($http, $q, exception, logger) {
     var service = {
-      sendMail: sendMail,
-      signUp: signUp
+        getProducts: getProducts,
+        logIn : logIn,
+        sendMail: sendMail,
+        signUp: signUp
     };
 
     return service;
@@ -40,19 +42,19 @@
      */
 
     function sendMail( messageInfo ) {
-      return $http.post('/api/sendmail', messageInfo)
-          .then(success)
-          .catch(fail);
+        return $http.post('/api/sendmail', messageInfo)
+            .then(success)
+            .catch(fail);
 
-      function success() {
-          console.log("sendMail success ");
-          return true;
-      }
+        function success() {
+            console.log("sendMail success ");
+            return true;
+        }
 
-      function fail(e) {
-          console.log("sendMail fail " + e);
-          return exception.catcher('XHR Failed for sendMail')(e);
-      }
+        function fail(e) {
+            console.log("sendMail fail " + e);
+            return exception.catcher('XHR Failed for sendMail')(e);
+        }
     }
 
     /**Llamada a servidor enviando datos para dar de alta un nuevo usuario
@@ -66,31 +68,53 @@
      */
 
     function signUp(userData) {
-      return $http.post('/api/signup', userData)
-          .then(success)
-          .catch(fail);
-      //si devuelve promesa ejecuta success
-      function success(response) {
-          return response;
-      }
-      //si no ejecuta fail
-      function fail(e) {
-          return exception.catcher('XHR Failed for signup')(e);
-      }
+        return $http.post('/api/signup', userData)
+            .then(success)
+            .catch(fail);
+        //si devuelve promesa ejecuta success
+        function success(response) {
+            return response;
+        }
+        //si no ejecuta fail
+        function fail(e) {
+            return exception.catcher('XHR Failed for signup')(e);
+        }
     }
 
     function logIn(userData) {
-      return $http.post('/api/login', userData)
-          .then(success)
-          .catch(fail);
-      //si devuelve promesa ejecuta success
-      function success(response) {
-          return response;
-      }
-      //si no ejecuta fail
-      function fail(e) {
-          return exception.catcher('XHR Failed for signup')(e);
-      }
+        return $http.post('/api/login', userData)
+            .then(success)
+            .catch(fail);
+        //si devuelve promesa ejecuta success
+        function success(response) {
+            return response;
+        }
+        //si no ejecuta fail
+        function fail(e) {
+            return exception.catcher('XHR Failed for logIn')(e);
+        }
     }
+
+    function getProducts(userId) {
+        if(userId) {
+            //getFovourites
+            return $http.get('/api/product_user', userId)
+            .then(success)
+            .catch(fail);
+        }
+        else{
+            return $http.post('/api/product')
+            .then(success)
+            .catch(fail);
+        }
+        function success(response) {
+            return response;
+        }
+
+        function fail(e){
+            return exception.catcher('XHR Failed for getProducts')(e);
+        }    
+    }
+    
   }
 })();

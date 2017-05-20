@@ -141,7 +141,7 @@
             return JSON.parse(dataDecrypt);
         }
 
-         function EncodeData(data) {
+        function EncodeData(data) {
             var dataEncrypt = JSON.stringify(data);
             return Base64encode(dataEncrypt);
         }
@@ -157,6 +157,13 @@
         }
 
         function GetUser(){
+            //función para comprobar si existe cookie de usuario registrado
+            var userCookie = $cookies.getObject('user');
+            if (userCookie) {
+                userCookie = Base64decode(userCookie);
+                userCookie = JSON.parse(userCookie);
+                return userCookie;
+            }
             return false;
         }
 
@@ -181,7 +188,27 @@
             {expires: new Date(new Date().getTime() + 60 * 60 * 1000)});
             console.log('Creada cookie de session');
             return true;
+        }
 
+        function NewUserCookie(user) {
+            //Crear variables con los datos necesarios
+            var userData = {
+                userId: '',
+                defaultLanguage: 'es',
+                lastLogin: new Date().getTime(), 
+                userType: 'user'
+            }
+            if(users){
+                sessionData.userId = user.user;
+                sessionData.userType = user.type;
+                sessionData.name = user.name;
+            }
+            
+            //Se crea cookie de session 
+            $cookies.putObject('userCookie', EncodeData(userData),
+            {expires: new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000)});
+            console.log('Creada cookie de usuario');
+            return true;
         }
         
         function SetSession(cookie){
