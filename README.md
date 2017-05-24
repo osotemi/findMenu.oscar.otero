@@ -64,26 +64,51 @@ The app has 4 feature modules and depends on a series of external modules and cu
 
 ```
 app --> [
-        app.admin --> [
+        app.auth --> [
             app.core,
-            app.widgets
+            app.auth
         ],
-        app.dashboard --> [
-            app.core,
-            app.widgets
+        app.blocks --> [
+          
         ],
+        app.contact --> [
+            app.core
+        ],
+        app.core --> [
+			'app.layout',
+            'blocks.cookies',
+            'blocks.exception',
+            'blocks.logger', 
+            'blocks.router',
+            'ngAnimate', 
+            'ngAria',
+            'ngCookies',
+            'ngMaterial',
+            'ngMessages',
+            'ngplus',      
+            'ngSanitize',
+            'pascalprecht.translate',
+            'ui.bootstrap',
+            'ui.router',
+		],
         app.layout --> [
+            app.core,
+            app.auth,
+
+        ],
+
+        app.main --> [
+            app.core
+        ],
+
+        app.product --> [
+            app.core
+        ],
+        app.user --> [
             app.core
         ],
         app.widgets,
-		app.core --> [
-			ngAnimate,
-			ngSanitize,
-			ui.router,
-			blocks.exception,
-			blocks.logger,
-			blocks.router
-		]
+		
     ]
 ```
 
@@ -94,6 +119,9 @@ This is an aggregator of modules that the application will need. The `core` modu
 
 #### blocks Modules
 Block modules are reusable blocks of code that can be used across projects simply by including them as dependencies.
+
+##### blocks.cookies Module
+The `blocks.cookies` module handles logging across the Angular app.
 
 ##### blocks.logger Module
 The `blocks.logger` module handles logging across the Angular app.

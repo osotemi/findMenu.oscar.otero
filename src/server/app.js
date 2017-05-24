@@ -23,7 +23,9 @@ app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
-app.use(cookieParser());//Necesario para definir connect.sid y solucionar TypeError: Cannot read property 'connect.sid' of undefined
+//Necesario para definir connect.sid y solucionar 
+//TypeError: Cannot read property 'connect.sid' of undefined
+app.use(cookieParser());
 app.use(cors());
 
 

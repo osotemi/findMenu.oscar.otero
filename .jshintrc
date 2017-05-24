@@ -1,6 +1,6 @@
 {
     "bitwise": true,
-    "camelcase": true,
+    "camelcase": false,
     "curly": true,
     "eqeqeq": true,
     "es3": false,
@@ -36,8 +36,8 @@
     "globalstrict": false,
     "iterator": false,
     "lastsemic": false,
-    "laxbreak": false,
-    "laxcomma": false,
+    "laxbreak": true,
+    "laxcomma": true,
     "loopfunc": true,
     "maxerr": 50,
     "moz": false,

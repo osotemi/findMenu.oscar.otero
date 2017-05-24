@@ -9,10 +9,11 @@ productModel.getProductMostFollowed = function( callback ) {
     console.log( 'Pre-if' );
     if( mySql.connection ){
         mySql.connection.query(
-            'SELECT * from FOOD WHERE foodId = ( SELECT followFoodId as FoodId FROM FOLLOWING GROUP BY followFoodId ORDER BY count(followUserId) DESC LIMIT 1 );', 
+            'SELECT * from FOOD WHERE foodId = ( SELECT followFoodId as FoodId ' + 
+            'FROM FOLLOWING GROUP BY followFoodId ORDER BY count(followUserId) DESC LIMIT 1 );', 
             function( error, mostFollowed) {
                 if( error ) {
-                    console.log("fail" );
+                    console.log('fail');
                     throw error;
                 }
                 else{
@@ -45,7 +46,8 @@ productModel.getProductPromoted = function( callback ) {
 
     if(mySql.connection){
         mySql.connection.query(
-            'SELECT * FROM FOOD INNER JOIN USERS ON userId = foodUserId WHERE userTypeOf = "offerer" AND foodPromoted = true ORDER BY foodAdded DESC LIMIT 1;', 
+            'SELECT * FROM FOOD INNER JOIN USERS ON userId = foodUserId ' + 
+            'WHERE userTypeOf = "offerer" AND foodPromoted = true ORDER BY foodAdded DESC LIMIT 1;', 
             function( error, promoted) {
                 if( error ) {
                     throw error;
@@ -54,7 +56,7 @@ productModel.getProductPromoted = function( callback ) {
                     callback(null, promoted);
                 }
             }
-        )
+        );
     }
 };
 
@@ -62,7 +64,8 @@ productModel.getProductAdvertising = function( callback ) {
 
     if(mySql.connection){
         mySql.connection.query(
-            'SELECT * FROM FOOD INNER JOIN USERS ON userId = foodUserId WHERE userTypeOf = "sponsor" ORDER BY foodAdded DESC LIMIT 1;', 
+            'SELECT * FROM FOOD INNER JOIN USERS ON userId = foodUserId ' + 
+            'WHERE userTypeOf = "sponsor" ORDER BY foodAdded DESC LIMIT 1;', 
             function( error, advertising) {
                 if( error ) {
                     throw error;
