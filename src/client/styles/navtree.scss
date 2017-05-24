@@ -37,6 +37,13 @@
                 padding-bottom: $padding_size;
                 width: auto;
                 li {
+                    #box-btn-logIn {
+                        align-self: left;
+                        @include btn-nav;
+                        width: auto;
+                        height: auto;
+                    }
+
                     #btn-burger {
                         align-self: left;
                         @include btn-nav;

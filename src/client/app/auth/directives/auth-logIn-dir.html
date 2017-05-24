@@ -1,4 +1,5 @@
-<span>
-    <button id="btn-login" type="button" ng-click="" ng-hide="true" class="fa fa-sign-in" aria-hidden="true">Log In</button>
-    <button id="btn-logout" type="button" ng-click="" class="fa fa-sign-out" aria-hidden="true">Log Out</button>
+<span ng-controller="AuthController as vm">
+    <button id="btn-login" type="button" ng-click="vm.openLogInModal()" ng-hide="vm.authUser" class="fa fa-sign-in" aria-hidden="true">Log In</button>
+    <h3 ng-hide="!vm.authUser">{{vm.userSesion.userEmail}}</h3>
+    <button id="btn-logout" type="button" ng-click="vm.logOut" ng-hide="!vm.authUser" class="fa fa-sign-out" aria-hidden="true">Log Out</button>
 </span>

@@ -27,10 +27,10 @@
           state: 'signup',
           config: {
               url: '/auth/signup',
-              templateUrl: 'app/auth/singup-auth-modal.html',
+              templateUrl: 'app/auth/auth-singup-modal.html',
               controller: 'AuthController',
               controllerAs: 'vm',
-              title: 'Signup'
+              title: 'Sign Up'
           }
       }
     ];

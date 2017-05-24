@@ -1,5 +1,5 @@
 // load all the things we need
-var localStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 
 // load up the auth model
@@ -16,7 +16,7 @@ module.exports = function(passport) {
         done(null, user);
     });
 
-    passport.use('local-signup', new localStrategy({
+    passport.use('local-signup', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField: 'user',
             passwordField: 'password',
@@ -38,7 +38,7 @@ module.exports = function(passport) {
                         userTypeOf: req.body.userType,
                         userAvatar: ''   
                     };
-                    console.log("local-signup newUser" + JSON.stringify( newUser));
+                    console.log('local-signup newUser' + JSON.stringify( newUser));
                     mySql.setUser(newUser, function (rows) {
                         if (rows) {
                             return done(null, user);
@@ -48,4 +48,31 @@ module.exports = function(passport) {
             });
         }
     ));
+
+    passport.use(
+        'local-login',
+        new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField: 'user',
+            passwordField: 'password',
+            passReqToCallback: true // allows us to pass back the entire request to the callback
+        },
+        function (req, user, password, done) { 
+
+            console.log('Antes de passport.use');
+            mySql.getUser(user, function (error, rows) {
+                if (!rows.length) {
+                    console.log('local login fail');
+                    return done(null, false, 'none user found'); 
+                }
+                if (!bcrypt.compareSync(password, rows[0].password)) {
+                    console.log('local login OK');
+                    return done(null, false, 'wrong password'); 
+                } else {
+                    
+                    return done(null, rows[0]);
+                }
+            });
+        })
+    );
 };

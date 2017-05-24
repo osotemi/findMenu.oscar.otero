@@ -5,9 +5,9 @@
         </div>    
 
         <md-input-container class="md-block">
-            <label>Nombre de usuario</label>
-            <input required name="inputUser" ng-model="vm.inputUser">
-            <div ng-messages="login_form.inputUser.$error">
+            <label>Email</label>
+            <input required name="inputEmail" ng-model="vm.inputEmail">
+            <div ng-messages="login_form.inputEmail.$error">
                 <div ng-message="required">This is required.</div>
             </div>
         </md-input-container>
@@ -24,11 +24,11 @@
         
         <h2><a href="#" id="linkRest">¿Has olvidado tu contraseña?</a></h2>
         <br>
-        <button class="btn btn-lg btn-primary btn-block send" type="submit" ng-disabled="login_form.$invalid" ng-click="vm.SubmitLogin()">Sign up</button>
+        <button class="btn btn-lg btn-primary btn-block send" type="submit" ng-disabled="login_form.$invalid" ng-click="vm.logIn()">Sign up</button>
         <div id="resultMessageFail" class="msg_error">{{vm.resultMessageFail}}</div>
         <p>¿Eres un nuevo cliente?</p>
         <hr class="login">
-        <button class="btn btn-lg btn-primary btn-block send" type="button" ng-click="vm.SubmitSignup()">Crea tu cuenta Findmenu</button>
+        <button class="btn btn-lg btn-primary btn-block send" type="button" ng-click="vm.logIn()">Crea tu cuenta Findmenu</button>
         <a class="btn btn-block btn-social btn-facebook float" target="_self" href="/auth/facebook"><span class="fa fa-facebook"></span> Sign in with Facebook</a>
         <a class="btn btn-block btn-social btn-twitter float" target="_self" href="/auth/twitter"><span class="fa fa-twitter"></span> Sign in with Twitter</a>
         <a class="btn btn-block btn-social btn-odnoklassniki float" target="_self" href="/auth/google"><span class="fa fa-google"></span> Sign in with Google</a>

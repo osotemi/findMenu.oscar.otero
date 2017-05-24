@@ -20,7 +20,8 @@
             GetSession : GetSession,
             GetUser : GetUser,
             NewSession : NewSession,
-            SetSession : SetSession
+            SetSession : SetSession,
+            NewUserCookie : NewUserCookie
         };
 
         function Base64decode(input) {
@@ -198,7 +199,7 @@
                 lastLogin: new Date().getTime(), 
                 userType: 'user'
             }
-            if(users){
+            if(user){
                 sessionData.userId = user.user;
                 sessionData.userType = user.type;
                 sessionData.name = user.name;

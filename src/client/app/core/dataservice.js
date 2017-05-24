@@ -47,12 +47,12 @@
             .catch(fail);
 
         function success() {
-            console.log("sendMail success ");
+            console.log('sendMail success ');
             return true;
         }
 
         function fail(e) {
-            console.log("sendMail fail " + e);
+            console.log('sendMail fail ' + e);
             return exception.catcher('XHR Failed for sendMail')(e);
         }
     }
@@ -81,16 +81,23 @@
         }
     }
 
+    /**Llamada a servidor enviando datos para hacer autentificarse
+     * 
+     * @param {Object} userData - Datos del usario
+     * @param {String} userData.email - Email del usuario
+     * @param {String} userData.password - Contraseña del usuario
+     * 
+     */
     function logIn(userData) {
-        return $http.post('/api/login', userData)
+        return $http.get('/api/login', userData)
             .then(success)
             .catch(fail);
-        //si devuelve promesa ejecuta success
         function success(response) {
+            console.log('logIn Ok' + JSON.stringify(response));
             return response;
         }
-        //si no ejecuta fail
         function fail(e) {
+            console.log('logIn Fail');
             return exception.catcher('XHR Failed for logIn')(e);
         }
     }

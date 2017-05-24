@@ -19,8 +19,6 @@
     function activate() {
       if(cookies.CheckCookies()){
         vm.session = cookies.GetSession();
-        console.log(vm.session.cookiesOk + 'True checkCookie!!!');
-
         if(!vm.session.cookiesOk){
             showCookiesAdvice();
         }

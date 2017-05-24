@@ -1,8 +1,8 @@
 <nav role="navigation" ng-controller="NavtreeController as vm">
     <span class="navtree">
         <ul id="topnav" class="nav">
-            <li class="dropdown nav navbar-nav">
-                <auth-login-dir></auth-login-dir>
+            <li id="box-btn-logIn" class="box-btn-menu">
+                <div ng-include="'app/auth/directives/auth-logIn-dir.html'"></div>
             </li>>
             <li class="box-btn-menu">
                 <button id="btn-translate" type="button" data-toggle="dropdown" class="fa fa-flag" ></button>
