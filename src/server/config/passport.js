@@ -7,7 +7,6 @@ var mySql = require('../auth/auth.model.js');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
-
     passport.serializeUser(function(user, done) {
         done(null, user);
     });
@@ -17,36 +16,36 @@ module.exports = function(passport) {
     });
 
     passport.use('local-signup', new LocalStrategy({
-            // by default, local strategy uses username and password, we will override with email
-            usernameField: 'user',
-            passwordField: 'password',
-            passReqToCallback: true // allows us to pass back the entire request to the callback
-        },
+        // by default, local strategy uses username and password, we will override with email
+        usernameField: 'user',
+        passwordField: 'password',
+        passReqToCallback: true // allows us to pass back the entire request to the callback
+    },
 
-        function(req, user, password, done) {
-            mySql.countUser(user, function (rows) {
-                //console.log(" En local-signup " + JSON.stringify(user) + 'rows: ' + rows[0].userCount);
-                if (rows[0].userCount >= 1) {
-                    return done(null, false, 'El nombre de usuario ya existe');
-                } else {
-                    // if there is no user with that username
-                    // create the user
-                    var newUser = {
-                        userName: user,
-                        userPassword: bcrypt.hashSync(password, null, null),
-                        userEmail: req.body.email,
-                        userTypeOf: req.body.userType,
-                        userAvatar: ''   
-                    };
-                    console.log('local-signup newUser' + JSON.stringify( newUser));
-                    mySql.setUser(newUser, function (rows) {
-                        if (rows) {
-                            return done(null, user);
-                        }
-                    });
-                }
-            });
-        }
+    function(req, user, password, done) {
+        mySql.countUser(user, function (rows) {
+            //console.log(" En local-signup " + JSON.stringify(user) + 'rows: ' + rows[0].userCount);
+            if (rows[0].userCount >= 1) {
+                return done(null, false, 'El nombre de usuario ya existe');
+            } else {
+                // if there is no user with that username
+                // create the user
+                var newUser = {
+                    userName: user,
+                    userPassword: bcrypt.hashSync(password, null, null),
+                    userEmail: req.body.email,
+                    userTypeOf: req.body.userType,
+                    userAvatar: ''   
+                };
+                console.log('local-signup newUser' + JSON.stringify(newUser));
+                mySql.setUser(newUser, function (rows) {
+                    if (rows) {
+                        return done(null, user);
+                    }
+                });
+            }
+        });
+    }
     ));
 
     passport.use(

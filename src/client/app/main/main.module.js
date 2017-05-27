@@ -1,7 +1,7 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular.module('app.main', [
-    'app.core'
-  ]);
+    angular.module('app.main', [
+        'app.core'
+    ]);
 })();

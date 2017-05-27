@@ -1,10 +1,10 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular.module('app.auth', [
-    'app.core',
-    'app.auth',
-    'ui.bootstrap'
-  ]);
+    angular.module('app.auth', [
+        'app.core',
+        'app.auth',
+        'ui.bootstrap'
+    ]);
 
 })();

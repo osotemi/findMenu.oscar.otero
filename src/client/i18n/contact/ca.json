@@ -1,0 +1,16 @@
+{
+    "CONTACT_US": "Posa't en contacte amb nosaltres",
+    "LBL_FC_EMAIL": "Per favor, introdueix el teu email",
+    "LBL_FC_MESSAGE": "Missatge",
+    "LBL_FC_SUBJECT": "Assumpte",
+    "OPT_ADVERTISE": "Anunciar-se amb nosaltres",
+    "OPT_HELLO": "Tan sols volia saludar",
+    "OPT_REPORT" : "Informar d'un error",
+    "OPT_RESTAURATEUR": "Informació per a restauradors",
+    "OPT_SUGGESTIONS": "Bústia de suggeriments",
+    "MSG_ERROR_EMAIL": "L'email introduït no coincideix amb una adreça d'email",
+    "MSG_ERROR_MESSAGE": "És necessari escriure un missatge",
+    "MSG_ERROR_SEND": "El correu no ha pogut ser enviat correctament",
+    "MSG_ERROR_SUBJECT": "Per favor, selecciona un assumpte",
+    "BTN_SEND": "Lliurar"
+}

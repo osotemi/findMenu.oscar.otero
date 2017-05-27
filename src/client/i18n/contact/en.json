@@ -1,0 +1,16 @@
+{
+    "CONTACT_US": "Contact with us",
+    "LBL_FC_EMAIL": "Please enter your email",
+    "LBL_FC_MESSAGE": "Message",
+    "LBL_FC_SUBJECT": "Subject",
+    "OPT_ADVERTISE": "Advertise with us",
+    "OPT_HELLO": "Just say hello",
+    "OPT_REPORT" : "Report an error",
+    "OPT_RESTAURATEUR": "Information for restorers",
+    "OPT_SUGGESTIONS": "Complaints and suggestions",
+    "MSG_ERROR_EMAIL": "The email direction doesn't match an email address",
+    "MSG_ERROR_MESSAGE": "Message is required",
+    "MSG_ERROR_SEND": "Error send message",
+    "MSG_ERROR_SUBJECT": "Subject is required",
+    "BTN_SEND": "Send"
+}

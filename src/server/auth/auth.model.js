@@ -21,7 +21,6 @@ authModel.getUser = function (userData, callback) {
 };
 
 authModel.setUser = function (userData, callback) {
-    
     if (mySql.connection) {
         mySql.connection.query('INSERT INTO USERS SET ?', userData, function (err, result) {
             if (err) {
@@ -34,7 +33,6 @@ authModel.setUser = function (userData, callback) {
 };
 
 authModel.countUser = function (user, callback) {
-    
     if (mySql.connection) {
         mySql.connection.query('SELECT COUNT(*) AS userCount FROM USERS WHERE userName like "' + user + '"', function (error, rows) {
             if (error) {

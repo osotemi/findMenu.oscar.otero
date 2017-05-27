@@ -1,4 +1,4 @@
-(function(){
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     ProductController.$inject = ['$q', 'cookies', 'dataservice'];
     /* @ngInject */
-    function ProductController( $q, cookies, dataservice ){
+    function ProductController($q, cookies, dataservice) {
         var vm = this;
 
         vm.promises = [];
@@ -17,28 +17,28 @@
         activate();
 
         function activate() {
-            
-            if(vm.userCookie) {
+
+            if (vm.userCookie) {
                 console.log('En if');
-                vm.promises = [ 
+                vm.promises = [
                     loadShowcase(vm.userCookie.userId)
                 ];
             }
-            else{
-                vm.promises = [ 
+            else {
+                vm.promises = [
                     loadShowcase(false)
                 ];
             }
 
-            return $q.all(vm.promises).then(function(){
+            return $q.all(vm.promises).then(function () {
                 console.log('Activated Product View');
             });
         }
 
         function loadShowcase(userId) {
-            
-            return dataservice.getProducts( userId ).then(function( pictures ) {
-                console.log( JSON.stringify( pictures.data ) );
+
+            return dataservice.getProducts(userId).then(function (pictures) {
+                console.log(JSON.stringify(pictures.data));
                 vm.showcase = pictures;
             });
         }

@@ -1,0 +1,16 @@
+{
+    "CONTACT_US": "Ponte en contacto con nosotros",
+    "LBL_FC_EMAIL": "Porfavor, introduce tu email",
+    "LBL_FC_MESSAGE": "Mensaje",
+    "LBL_FC_SUBJECT": "Asunto",
+    "OPT_ADVERTISE": "Anunciarse con nosotros",
+    "OPT_HELLO": "Solo quería saludar",
+    "OPT_REPORT" : "Informar de un error",
+    "OPT_RESTAURATEUR": "Información para restauradores",
+    "OPT_SUGGESTIONS": "Buzón de sugerencias",
+    "MSG_ERROR_EMAIL": "El email introducido no concuerda con una dirección de email",
+    "MSG_ERROR_MESSAGE": "Es necesario escribir un mensaje",
+    "MSG_ERROR_SEND": "Ha ocurrido un error al enviar el cooreo",
+    "MSG_ERROR_SUBJECT": "Por favor, selecciona un asunto",
+    "BTN_SEND": "Enviar"
+}

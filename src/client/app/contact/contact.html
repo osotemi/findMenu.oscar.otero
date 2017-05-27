@@ -1,0 +1,44 @@
+<section id="contact-view" class="base-section">
+    <article id="contact-article" class="base-article">
+        <h2  class="contact-title" translate="CONTACT_US">CONTACT_US</h2>
+        
+        <form id="contact-form" class="main-form" name="fcontact"  novalidate>
+            <md-input-container class="md-block">
+                <label translate="LBL_FC_EMAIL"></label>
+                <input required type="email"  name="fcEmail" ng-model="vm.data.from"
+                        minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                <div ng-messages="fcontact.fcEmail.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']" translate="MSG_ERROR_EMAIL"></div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label translate="LBL_FC_SUBJECT"></label>
+                <md-select required  name="fcsubject" ng-model="vm.data.subject" required>
+                    <md-option value="restaurateur" translate="OPT_RESTAURATEUR"></md-option>
+                    <md-option value="advertise" translate="OPT_ADVERTISE">OPT_ADVERTISE</md-option>
+                    <md-option value="report" translate="OPT_REPORT">OPT_REPORT</md-option>
+                    <md-option value="suggestions" translate="OPT_SUGGESTIONS">OPT_SUGGESTIONS</md-option>
+                    <md-option value="hello" translate="OPT_HELLO">OPT_HELLO</md-option>
+                </md-select>
+                <div ng-messages="fcontact.fcSubject.$error" role="alert">
+                    <div ng-message="required" translate="MSG_ERROR_SUBJECT"></div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label translate="LBL_FC_MESSAGE"></label>
+                <textarea required type="message"  name="fcMessage" ng-model="vm.data.text"
+                        minlength="10" maxlength="300" ng-pattern="/^.+@.+\..+$/" />
+
+                <div ng-messages="fcontact.fcMessage.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']" translate="MSG_ERROR_MESSAGE"></div>
+                </div>
+            </md-input-container>
+
+            <button id="fcontact-btn-send" class="button-default" type="submit" ng-disabled="fcontact.$invalid" ng-click="vm.sendContactMail()" translate="BTN_SEND"></button>
+            <div id="fcontact-result-fail" class="form-error" ng-hide="{{vm.showResultMessage}}" translate="MSG_ERROR_SEND"></div>
+        </form>    
+    </article>
+</section>

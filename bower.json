@@ -49,7 +49,9 @@
     "bootstrap": {
       "main": [
         "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
+        "dist/js/bootstrap.js",
+        "angular-material.js",
+        "angular-material.css"
       ]
     },
     "font-awesome": {

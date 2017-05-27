@@ -1,0 +1,16 @@
+{
+    "CONTACT_US": "¿Tes algo que dicirnos?",
+    "LBL_FC_EMAIL": "Porfavor, introduce o teu email",
+    "LBL_FC_MESSAGE": "Mensaxe",
+    "LBL_FC_SUBJECT": "Asunto",
+    "OPT_ADVERTISE": "Anunciarse connosco",
+    "OPT_HELLO": "Só quería saudar",
+    "OPT_REPORT" : "Informar dun erro",
+    "OPT_RESTAURATEUR": "Información para restauradores",
+    "OPT_SUGGESTIONS": "Queixas e suxestións",
+    "MSG_ERROR_EMAIL": "O email introducido non coincide cunha dirección de email",
+    "MSG_ERROR_MESSAGE": "É necesario escribir unha mensaxe",
+    "MSG_ERROR_SEND": "Un erro ocurreu ao envíar o mensaxe",
+    "MSG_ERROR_SUBJECT": "Por favor, selecciona un asunto",
+    "BTN_SEND": "Enviar"
+}

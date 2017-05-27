@@ -2,10 +2,10 @@
     'use strict';
 
     angular
-            .module('app.layout')
-            .controller('NavtreeController', NavtreeController);
+        .module('app.layout')
+        .controller('NavtreeController', NavtreeController);
 
-    NavtreeController.$inject = [ 'config', '$translate', '$translatePartialLoader','$state', 'routerHelper', '$window'];
+    NavtreeController.$inject = ['config', '$translate', '$translatePartialLoader', '$state', 'routerHelper', '$window'];
     /* @ngInject */
     function NavtreeController(config, $translate, $translatePartialLoader, $state, routerHelper, $window) {
         var vm = this;
@@ -40,26 +40,26 @@
             });
         }
 
-        function navBarCollapse(){
+        function navBarCollapse() {
             vm.navCollapsed = !vm.navCollapsed;
             console.log('Hide navBar: ' + vm.navCollapsed);
         }
 
-        function responsiveNav(){
-            if($window.innerWidth > 768){
+        function responsiveNav() {
+            if ($window.innerWidth > 768) {
                 vm.navCollapsed = false;
                 vm.btnBurgerCollapsed = true;
             }
-            else{
+            else {
                 vm.navCollapsed = true;
                 vm.btnBurgerCollapsed = false;
             }
         }
 
         function setLang(langKey) {
-          // You can change the language during runtime
-          console.log('Language set to '+ langKey);
-          $translate.use(langKey);
+            // You can change the language during runtime
+            console.log('Language set to ' + langKey);
+            $translate.use(langKey);
         }
 
         function isCurrent(route) {

@@ -5,7 +5,6 @@ var mySql = require('../auth/auth.model');
 
 exports.signup = function (req, res, next) {
     passport.authenticate('local-signup', function (err, user, info) {
-        
         if (err) {
             return res.send('err');
         }
@@ -29,4 +28,4 @@ exports.login = function (req, res, next) {
         return res.send(true);
 
     })(req, res, next);
-};
+};/* auth controller  */

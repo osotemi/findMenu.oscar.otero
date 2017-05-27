@@ -1,12 +1,12 @@
-var Product = require( './product.model.js' );
+var Product = require('./product.model.js');
 
-exports.getProduct = function( req, res ) {
+exports.getProduct = function(req, res) {
     Product.getProductMostFollowed(
-        function( err, products ) {
-            if( err ) {
-                res.send( err );
+        function(err, products) {
+            if (err) {
+                res.send(err);
             }
-            res.json( products );
+            res.json(products);
         }
     );
 };

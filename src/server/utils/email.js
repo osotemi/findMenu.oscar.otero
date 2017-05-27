@@ -5,12 +5,12 @@ exports.sendEmail = function (req, res) {
     var email = {};
     var emailTo = 'oscarompro@gmail.com';
     var emailFrom = 'oscarompro@gmail.com';
-    var body='';
+    var body = '';
     //Conseguir sendgridKey y montar transort para email
     //console.log('--> Clavve sendgrid: ' + process.env.sendgridKey);
     var options = {
         auth: {
-            api_key: process.env.sendgridKey
+            API_KEY: process.env.sendgridKey
         }
     };
     var mailer = nodemailer.createTransport(sgTransport(options));
@@ -24,9 +24,9 @@ exports.sendEmail = function (req, res) {
                     '<div id="contact-email">' +
                     '<div> <h1>Contacto con Findmenu</h1> <h4>Sugerencia: ' + req.body.subject +
                     '</h4></div>' +
-                    '<p>Sr/Sra: ' + req.body.name + ' Su petición ha sido recibida por'+
+                    '<p>Sr/Sra: ' + req.body.name + ' Su petición ha sido recibida por' +
                     'el equipo de Findmenu, en breve responderán por su interés</p>' +
-                    '<p>Puede seguir disfrutando de los servicios de Findmenu pulsando'+
+                    '<p>Puede seguir disfrutando de los servicios de Findmenu pulsando' +
                     '<a href="http://localhost:3000/">aqu&iacute;</a></p>' +
                     '</div>' +
                     ' </body>';
@@ -37,9 +37,9 @@ exports.sendEmail = function (req, res) {
                     '<div id="contact-email">' +
                     '<div> <h1>Contacto con Findmenu</h1> <h4>Sugerencia: ' + req.body.subject +
                     '</h4></div>' +
-                    '<p>Sr/Sra: ' + req.body.name + ' Su petición ha sido recibida por'+
+                    '<p>Sr/Sra: ' + req.body.name + ' Su petición ha sido recibida por' +
                     'el equipo de Findmenu, en breve responderán por su interés</p>' +
-                    '<p>Puede seguir disfrutando de los servicios de Findmenu pulsando'+
+                    '<p>Puede seguir disfrutando de los servicios de Findmenu pulsando' +
                     '<a href="http://localhost:3000/">aqu&iacute;</a></p>' +
                     '</div>' +
                     ' </body>';
@@ -48,7 +48,7 @@ exports.sendEmail = function (req, res) {
             break;
     }
 
-    templateHtml = '<html><head><meta charset="utf-8" /></head>' + body +'</html>';
+    templateHtml = '<html><head><meta charset="utf-8" /></head>' + body + '</html>';
 
     email = {
         from: emailFrom,

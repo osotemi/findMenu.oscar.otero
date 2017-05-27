@@ -1,9 +1,8 @@
-(function() {
-  'use strict';
+(function () {
+    'use strict';
 
-  angular.module('app.product', [
-    'app.core',
-    'ui.bootstrap'
-  ]);
-
+    angular.module('app.product', [
+        'app.core',
+        'ui.bootstrap'
+    ]);
 })();
