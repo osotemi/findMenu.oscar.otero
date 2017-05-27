@@ -36,7 +36,7 @@
         }
 
         function loadShowcase(userId) {
-            console.log('En loadShowcase');
+            
             return dataservice.getProducts( userId ).then(function( pictures ) {
                 console.log( JSON.stringify( pictures.data ) );
                 vm.showcase = pictures;

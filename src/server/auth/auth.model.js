@@ -7,8 +7,7 @@ var authModel = {};
 authModel.getUser = function (userData, callback) {
     if (mySql.connection) {
         mySql.connection.query(
-            'SELECT * FROM USERS WHERE userEmail = ? AND userPassword = ?', userData, 
-            function (err, result) {
+            'SELECT * FROM USERS WHERE userEmail = ? AND userPassword = ?', userData, function (err, result) {
                 if (err) {
                     console.log('getUser OK');
                     throw err;
@@ -37,8 +36,7 @@ authModel.setUser = function (userData, callback) {
 authModel.countUser = function (user, callback) {
     
     if (mySql.connection) {
-        mySql.connection.query('SELECT COUNT(*) AS userCount FROM USERS WHERE userName like "' + user + '"', 
-        function (error, rows) {
+        mySql.connection.query('SELECT COUNT(*) AS userCount FROM USERS WHERE userName like "' + user + '"', function (error, rows) {
             if (error) {
                 throw error;
             } else {

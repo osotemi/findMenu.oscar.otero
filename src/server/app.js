@@ -1,5 +1,7 @@
-/*jshint node:true*/
 'use strict';
+/*jshint node:false*/
+/*jshint strict:false */
+
 
 var express = require('express');
 var app = express();

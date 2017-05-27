@@ -106,16 +106,16 @@
         }
 
         function CheckCookies(){
-            var session = GetSession();
-            if(session) return true;//DecodeData();
+            var session = new GetSession();
+            if(session) {return true;}//DecodeData();
             //console.log(session);
             NewSession();
             return false;
         }
 
         function CheckUser(){
-            var user = GetUser();
-            if(user) return true;//DecodeData();
+            var user = new GetUser();
+            if(user) {return true;}//DecodeData();
             NewSession();
             return false;
         }
@@ -177,7 +177,7 @@
                 start: new Date().getTime(), 
                 userId: '', 
                 userType: 'guest'
-            }
+            };
             if(users){
                 sessionData.userId = users.user;
                 sessionData.userType = users.type;
@@ -193,12 +193,12 @@
 
         function NewUserCookie(user) {
             //Crear variables con los datos necesarios
-            var userData = {
+            var sessionData = {
                 userId: '',
                 defaultLanguage: 'es',
                 lastLogin: new Date().getTime(), 
                 userType: 'user'
-            }
+            };
             if(user){
                 sessionData.userId = user.user;
                 sessionData.userType = user.type;
@@ -206,7 +206,7 @@
             }
             
             //Se crea cookie de session 
-            $cookies.putObject('userCookie', EncodeData(userData),
+            $cookies.putObject('userCookie', EncodeData(sessionData),
             {expires: new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000)});
             console.log('Creada cookie de usuario');
             return true;

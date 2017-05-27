@@ -17,6 +17,10 @@
         display: flex;
         align-items: center;
         
+        .nav > li{
+            display: inline-flex;
+        }
+
         .navtree{
             @include border-bottom-green($border_size);
             @include responsive-layout(800px, 10%);
@@ -35,15 +39,8 @@
                 @include border-left-right(1px);
                 padding-top: $padding_size;
                 padding-bottom: $padding_size;
-                width: auto;
+                
                 li {
-                    #box-btn-logIn {
-                        align-self: left;
-                        @include btn-nav;
-                        width: auto;
-                        height: auto;
-                    }
-
                     #btn-burger {
                         align-self: left;
                         @include btn-nav;
@@ -57,18 +54,19 @@
                         @include btn-nav;
                         padding-right: $padding_size;
                     }
-
-                    li.box-btn-menu {
-                        float: right;
-                        padding-right: $padding_size;
-                        width: 35%;
-                    }
                 }
-               #topnav > li:nth-child(2) {
+
+                #box-btn-logIn {
+                    align-self: left;
+                    display: inline;
+                    @include btn-nav;
+                }
+                
+               #box-btn-language {
                     float: right;
-                    padding-right: 1.5em;
-                    width: 40%;
-                } 
+                    padding-right: $padding_size;
+                    width: 35%;
+               }
             }
         }
 

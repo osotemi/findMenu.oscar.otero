@@ -71,6 +71,7 @@ gulp.task('styles', ['clean-styles'], function() {
 });
 */
 gulp.task('sass', function () {
+  log('Compiling Sass --> CSS');
   return gulp.src(config.sass)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(config.temp));
@@ -99,7 +100,8 @@ gulp.task('i18n', ['clean-i18n'], function() {
 gulp.task('clean-i18n', function(done) {
     clean(config.build + 'i18n/**/*.*', done);
 });
-
+// inspect the PATH key on process.env
+console.log( process.env.PATH );
 /**
  * Copy fonts
  * @return {Stream}

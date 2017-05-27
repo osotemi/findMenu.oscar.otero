@@ -1,14 +1,13 @@
 <nav role="navigation" ng-controller="NavtreeController as vm">
     <span class="navtree">
         <ul id="topnav" class="nav">
-            <li id="box-btn-logIn" class="box-btn-menu">
-                <div ng-include="'app/auth/directives/auth-logIn-dir.html'"></div>
+            <li id="box-btn-logIn">
+                <span ng-include="'app/auth/directives/auth-logIn-dir.html'"></span>
             </li>>
-            <li class="box-btn-menu">
+            <li id="box-btn-language" class="box-btn-menu">
                 <button id="btn-translate" type="button" data-toggle="dropdown" class="fa fa-flag" ></button>
                 <ul class="dropdown-menu" role="menu">
                     <li> <a ng-click="vm.setLang('ca')" translate="CATALA"></a></li>
-                    <li> <a></a></li>
                     <li> <a ng-click="vm.setLang('gl')" translate="GALICIAN"></a></li>
                     <li> <a ng-click="vm.setLang('en')" translate="ENGLISH"></a></li>
                     <li> <a ng-click="vm.setLang('es')" translate="SPANISH"></a></li>

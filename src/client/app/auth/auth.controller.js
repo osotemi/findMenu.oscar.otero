@@ -5,9 +5,11 @@
     .module('app.auth')
     .controller('AuthController', AuthController);
 
-  AuthController.$inject = ['cookies','dataservice', 'logger', '$q', '$scope', '$translate', '$translatePartialLoader', '$uibModal', '$timeout'];
+  AuthController.$inject = ['cookies','dataservice', 'logger', 
+  '$q', '$scope', '$state' , '$translate', '$translatePartialLoader', '$uibModal', '$timeout'];
   /* @ngInject */
-  function AuthController( cookies, dataservice, logger, $q, $scope, $translate, $translatePartialLoader, $uibModal, $timeout) {
+  function AuthController( cookies, dataservice, logger, 
+  $q, $scope, $state, $translate, $translatePartialLoader, $uibModal, $timeout) {
     var vm = this;
     vm.title = 'Authentication';
     vm.inputUser = '';
@@ -114,11 +116,11 @@
         dataservice.logIn(dataUser).then(function (response) {
             if (response.data.email === vm.inputEmail) {
                 logger.success('Usuario autentificado');
-                cookiesService.NewUserCookie(response.data);
+                cookies.NewUserCookie(response.data);
                 vm.userSesion =response.data;
                 console.log(JSON.stringify(vm.userSesion));
-                $uibModalInstance.dismiss('cancel');
-                CloseModal();
+                $uibModal.dismiss('cancel');
+                vm.closeModal();
                 $state.go('user');
             } else if (response.data === 'errorcredentials') {
                 console.log('ERROR logIn - response.data === errorcredentials ');
