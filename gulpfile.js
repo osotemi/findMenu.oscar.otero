@@ -198,6 +198,7 @@ gulp.task('build-specs', ['templatecache'], function(done) {
     var specs = config.specs;
 
     if (args.startServers) {
+        log('Starting servers' + config.serverIntegrationSpecs);
         specs = [].concat(specs, config.serverIntegrationSpecs);
     }
     options.devDependencies = true;
@@ -336,13 +337,6 @@ gulp.task('clean-code', function(done) {
 gulp.task('test', ['vet', 'templatecache'], function(done) {
     startTests(true /*singleRun*/, done);
 });
-
-/**
- * Runs the e2e specs using protractor.
- */
-// gulp.task('e2e', ['vet'], function(done) {
-//   runProtractor(done);
-// });
 
 /**
  * Run specs and wait.
@@ -506,37 +500,6 @@ function getNodeOptions(isDev) {
     };
 }
 
-//function runNodeInspector() {
-//    log('Running node-inspector.');
-//    log('Browse to http://localhost:8080/debug?port=5858');
-//    var exec = require('child_process').exec;
-//    exec('node-inspector');
-//}
-
-// /**
-//  * Start e2e tests using Protractor.
-//  * @param {function} done Callback when protractor has finished its operation.
-//  * @return {Stream}
-//  */
-// function runProtractor(done) {
-//   log('Running e2e Protractor Specs...');
-
-//   return gulp
-//     .src([config.scenarios], {read: false})
-//     .pipe($.plumber())
-//     .pipe(protractor({
-//       configFile: './protractor.config.js'
-//     }))
-//     .on('error', function() {
-//       log('Protractor Error.');
-//       done();
-//     })
-//     .on('end', function() {
-//       log('Protractor End.');
-//       done();
-//     });
-// }
-
 /**
  * Start BrowserSync
  * --nosync will avoid browserSync
@@ -637,7 +600,7 @@ function startTests(singleRun, done) {
     new Karma({
         configFile: __dirname + '/karma.conf.js',
         exclude: excludeFiles,
-        singleRun: !!singleRun
+        singleRun: singleRun
     }, karmaCompleted).start();
 
     ////////////////

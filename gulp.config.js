@@ -113,16 +113,14 @@ module.exports = function () {
         testlibraries: [
             nodeModules + '/mocha/mocha.js',
             nodeModules + '/chai/chai.js',
+            nodeModules + '/angular-aria/angular-aria.js',
+            nodeModules + '/orchestrator/index.js',
             nodeModules + '/sinon-chai/lib/sinon-chai.js'
         ],
         specHelpers: [client + 'test-helpers/*.js'],
         specs: [clientApp + '**/*.spec.js'],
         serverIntegrationSpecs: [client + '/tests/server-integration/**/*.spec.js'],
-        /**
-         * E2E Scenario Files
-         */
-        scenarios: client + '/test/e2e/**/*.spec.js',
-
+        
         /**
          * Node settings
          */

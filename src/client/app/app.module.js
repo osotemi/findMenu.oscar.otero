@@ -8,7 +8,6 @@
         'app.layout',
         'app.main',
         'app.product',
-        'app.user',
-        'app.widgets'
+        'app.user'
     ]);
 })();

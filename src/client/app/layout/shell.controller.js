@@ -5,9 +5,9 @@
         .module('app.layout')
         .controller('ShellController', ShellController);
 
-    ShellController.$inject = ['$log', '$rootScope', '$scope', '$timeout', 'config', 'cookies', 'logger', 'toastr',];
+    ShellController.$inject = ['$log', '$rootScope', '$timeout', 'config', 'cookies', 'logger', 'toastr',];
     /* @ngInject */
-    function ShellController($log, $rootScope, $scope, $timeout, config, cookies, logger, toastr) {
+    function ShellController($log, $rootScope, $timeout, config, cookies, logger, toastr) {
         var vm = this;
         vm.loadingMessage = 'Please wait ...';
         vm.isBusy = true;

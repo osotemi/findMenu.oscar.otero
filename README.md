@@ -81,7 +81,6 @@ app --> [
             'blocks.logger', 
             'blocks.router',
             'ngAnimate', 
-            'ngAria',
             'ngCookies',
             'ngMaterial',
             'ngMessages',

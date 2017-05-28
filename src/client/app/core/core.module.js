@@ -3,21 +3,20 @@
 
     angular
       .module('app.core', [
-        'app.layout',
         'blocks.cookies',
         'blocks.exception',
         'blocks.logger', 
         'blocks.router',
-        'ngAnimate', 
         'ngAria',
+        'ngAnimate',
         'ngCookies',
         'ngMaterial',
-        'ngMessages',
-        'ngplus',      
+        'ngMessages',     
         'ngSanitize',
         'pascalprecht.translate',
         'ui.bootstrap',
         'ui.router',
+        'ngplus'
       ])
       .factory('MyErrorHandler', function ($q, $log) {
           return function (part, lang, response) {

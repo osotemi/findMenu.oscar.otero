@@ -1,6 +1,6 @@
 {
-  "name": "helloworld",
-  "description": "helloworld Project Generated from HotTowel Angular",
+  "name": "findmenu",
+  "description": "findMenu Project Generated from HotTowel Angular",
   "version": "0.0.2",
   "scripts": {
     "init": "npm install",
@@ -10,9 +10,7 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "angular-cookies": "~1.4.0",
-    "angular-messages": "^1.6.4",
-    "bcrypt-nodejs": "0.0.3",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "~1.8.2",
     "cookie": "^0.3.1",
     "cookie-parser": "~1.4.3",
@@ -34,7 +32,6 @@
     "serve-favicon": "~2.0.1"
   },
   "devDependencies": {
-    "angular-translate": "^2.15.1",
     "browser-sync": "~2.12.2",
     "chai": "~3.1.0",
     "chai-as-promised": "~5.1.0",
