@@ -1,0 +1,17 @@
+.article-h3 {
+    color: $color_alerta;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 5%;
+}
+
+#product-data {
+    label {
+        display: block;
+        color: $color_alerta;
+
+        strong {
+            color: $color_blanco;
+        }
+    }
+}

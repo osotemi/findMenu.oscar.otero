@@ -210,7 +210,7 @@
                 console.log('NewSession Cookie created');
                 //Se crea cookie de session 
                 $cookies.putObject('userCookie', EncodeData(userData),
-                {expires: new Date(new Date().getTime() + 60 * 60 * 1000)});
+                {expires: new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000)});
                 console.log('Creada cookie de usurario');
                 return true;
             }

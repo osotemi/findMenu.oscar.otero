@@ -1,0 +1,22 @@
+<section id="product-view" class="base-section">
+    <!--<div ng-include="'app/product/product-carrousel.html'"></div>-->
+    <article id="product-list-article" >
+
+        <h3 class="article-h3">Encuentra tu menú entre {{vm.products.length}} disponibles</h3>
+        <ol>
+        <li ng-repeat="product in vm.products" id="{{product.id}}">
+            <div class="detail-product" >
+                <address id="product-data">
+                    <label>Nombre<strong>{{product.foodName}}</strong></label>
+                    <label>Precio: <strong>{{product.foodPrice }} €</strong></label>
+                    <label><strong>{{product.foodDescription }}</strong></label>
+                    
+                    <label>Usuarios que repetirian: "{{product.foodFollowers}}"</div>
+                    <button class="button-default" ng-click="vm.showProductView(product.foodId)">Detalles</button>
+                    <button class="button-default" ng-click="vm.centerOnMap(product.foodId)">Localización</button>
+                </address>
+            </div>
+        </li>
+        </ol>
+    </article>
+</section>

@@ -24,6 +24,8 @@ exports.login = function (req, res, next) {
         }
         if (!user) {
             console.log('auth controller !err' + JSON.stringify(info));
+            return res.send('errorcredentials');
+
         }
         console.log('auth controller login OK');
         return res.send(user);

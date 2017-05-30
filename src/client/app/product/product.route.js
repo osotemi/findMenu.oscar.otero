@@ -17,7 +17,7 @@
                 state: 'product',
                 config: {
                     url: '/product',
-                    templateUrl: 'app/product/product-carrousel.html',
+                    templateUrl: 'app/product/product.html',
                     controller: 'ProductController',
                     controllerAs: 'vm',
                     title: 'Product View',

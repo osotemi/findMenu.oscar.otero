@@ -89,39 +89,37 @@
          * 
          */
         function logIn(userData) {
-            console.log('EN LOG IN');
             return $https.post('/api/login', userData)
                 .then(success)
                 .catch(fail);
             function success(response) {
-                console.log('logIn Ok' + JSON.stringify(response));
                 return response;
             }
             function fail(e) {
-                console.log('logIn Fail');
                 return exception.catcher('XHR Failed for logIn')(e);
             }
         }
 
         function getProducts(userId) {
             if (userId) {
-                //getFovourites
-                return $https.get('/api/product_user', userId)
+                console.log('getProducts userId');
+                return $https.get('/api/products', userId)
                     .then(success)
                     .catch(fail);
             }
             else {
-                return $https.get('/api/product')
+                console.log('getProducts else');
+                return $https.get('/api/products')
                     .then(success)
                     .catch(fail);
             }
             function success(response) {
-                console.log('response');
+                console.log(JSON.stringify(response));
                 return response;
             }
 
             function fail(e) {
-                console.log('response fail' + e);
+                console.log('getProducts response fail' + e);
                 return exception.catcher('XHR Failed for getProducts')(e);
             }
         }
