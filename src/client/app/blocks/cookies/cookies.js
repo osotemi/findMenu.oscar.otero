@@ -196,25 +196,25 @@
         }
 
         function NewUserCookie(user) {
-            //Crear variables con los datos necesarios
-            var sessionData = {
-                userId: '',
-                defaultLanguage: 'es',
-                lastLogin: new Date().getTime(), 
-                userType: 'user'
-            };
+             //Crear variables con los datos necesarios
+            console.log('NewSession' + JSON.stringify(user));
             if (user) {
-                console.log('NewUserCookie' + user);
-                sessionData.userId = user.user;
-                sessionData.userType = user.type;
-                sessionData.name = user.name;
+                var userData = {
+                    userAvatar: '../images/avatar/' + user.userAvatar,
+                    userEmail: user.userEmail,
+                    userName: user.userName,
+                    userId: user.userId, 
+                    userType: 'guest',
+                    
+                };
+                console.log('NewSession Cookie created');
+                //Se crea cookie de session 
+                $cookies.putObject('userCookie', EncodeData(userData),
+                {expires: new Date(new Date().getTime() + 60 * 60 * 1000)});
+                console.log('Creada cookie de usurario');
+                return true;
             }
-            
-            //Se crea cookie de session 
-            $cookies.putObject('userCookie', EncodeData(sessionData),
-            {expires: new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000)});
-            console.log('Creada cookie de usuario');
-            return true;
+            return false;
         }
         
         function SetSession(cookie) {

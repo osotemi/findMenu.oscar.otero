@@ -5,12 +5,12 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['logger', '$q', '$state', '$translate', '$translatePartialLoader'];
+    MainController.$inject = ['cookies', 'logger', '$q', '$state', '$translate', '$translatePartialLoader'];
     /* @ngInject */
-    function MainController(logger, $q, $state, $translate, $translatePartialLoader) {
+    function MainController(cookies, logger, $q, $state, $translate, $translatePartialLoader) {
         var vm = this;
+        vm.userAutentified = false;
         vm.title = 'Main';
-        vm.singInOnClick = singInOnClick;
         
         $translatePartialLoader.addPart('main');
         $translate.refresh();
@@ -18,15 +18,19 @@
         activate();
 
         function activate() {
-            console.log('Activated Main View');
+            var promises = [checkUserCookies()];
+            
+            return $q.all(vm.promises).then(function () {
+                if(vm.userAutentified) {
+                    console.log('Redirected to user');
+                    $state.go('user');
+                }
+                console.log('Activated Main View');
+            });
         }
 
-        //Funcionalidad de cookies
-        //
-
-        /* Eventos */
-        function singInOnClick() {
-            //$state.go('auth');
+        function checkUserCookies() {
+            vm.userAutentified = cookies.CheckUser();
         }    
     }
 })();

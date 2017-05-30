@@ -11,7 +11,17 @@
         background-repeat: no-repeat;
         //background-origin: border-box;
         background-image: url($image);
-        background-size: auto;
+        background-size: cover;
+        background-position: center;
+   }
+
+   @mixin background-cover($image) {
+        @include border-left-right(1px);
+        
+        background-repeat: no-repeat;
+        //background-origin: border-box;
+        background-image: url($image);
+        background-size: cover;
         background-position: center;
    }
 

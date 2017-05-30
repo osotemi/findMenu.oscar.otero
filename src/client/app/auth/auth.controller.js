@@ -40,6 +40,9 @@
             if (cookies.CheckUser()) {
                 vm.authUser = true;
                 vm.userSesion = cookies.GetUser();
+                if(!vm.userSesion.userAvatar){
+                    vm.userSesion.userAvatar = '../images/avatar/default-avatar.svg';
+                }
                 console.log('auth-controller User cookie found' + JSON.stringify(vm.userSesion));
             }
             //NavBar visible
@@ -127,8 +130,12 @@
             dataservice.logIn(dataUser).then(function (response) {
                 if (response.data.userEmail === vm.inputEmail) {
                     logger.success('Usuario autentificado');
-                    cookies.NewUserCookie(response.data);
                     vm.userSesion = response.data;
+                    if(!vm.userSesion.userAvatar) {
+                        vm.userSesion.userAvatar = 'default-avatar.svg';
+                    }
+                    cookies.NewUserCookie(vm.userSesion);
+                    console.log(JSON.stringify(vm.userSesion));
                     vm.closeModal();
                     $state.go('user');
                 } else if (response.data === 'Error on email or pass') {

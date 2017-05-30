@@ -1,0 +1,41 @@
+<section id="user-profile-view" class="user-profile-section">
+    <article id="user-profile" class="base-article" ng-show="{{vm.userAutentified}}">
+        <table>
+            <tr>
+                <th>Perfil de usuario</th>
+            </tr>
+            <tr>
+                <td>
+                    <label>Nombre</label>
+                </td>
+                <td>{{vm.userSesion.userName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Avatar</label>
+                </td>
+                <td>
+                    <img alt="Profile image"  src="{{vm.userSesion.userAvatar}}"></img>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Email:<label>    
+                </td>
+                <td>{{vm.userSesion.userEmail}}</td>
+            </tr>
+        </table>
+        
+        <button ng-hide="{{vm.userSesion.userType === 'offerer' || vm.userSesion.userType === 'sponsor'}}" class="button-default">Identificarme como usuario restaurador</button>
+    
+        <button class="button-default">Modificar</button>
+        
+    </article>
+    <article id="user-profile-alert" class="alert-article" ng-show="{{!vm.userAutentified}}">
+        <h2>Necesaria autentificación</h2>
+        <p>Es necesario estar identificado para poder acceder al contenido de esta página</p>
+        
+        <a href="/" ><button class="button-default">Ir a home</button></a>
+        <a href="/auth" ><button class="button-default">Registrarse</button></a>
+    </article>
+</section>

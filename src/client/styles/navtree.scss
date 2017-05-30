@@ -57,7 +57,6 @@
                 }
 
                 #box-btn-logIn {
-                    align-self: left;
                     display: inline;
                     @include btn-nav;
                 }
@@ -65,7 +64,7 @@
                #box-btn-language {
                     float: right;
                     padding-right: $padding_size;
-                    width: 35%;
+                    width: 20%;
                }
             }
         }

@@ -1,5 +1,23 @@
 <section id="user-view" class="base-section" ng-controller="UserController as vm">
-    <article id="user-slider">
-       <div ng-include="'app/product/product-carrousel.html'"></div>
+    <h2>Encuentra tu menú para hoy</h2>
+    <article id="user-slider" class="base-article">
+        <h3>Menús destacados</h3>
+        <div ng-include="'app/product/product-carrousel.html'"></div>
+    </article>
+    <article id="user-slider" class="base-article">
+        <h3 class="sub-menu-header">Tus {{vm.favoriteProducts.length}} menús favoritos disponibles</h3>
+        <ol id="favorite-list">
+            <li ng-repeat="product in vm.favoriteProducts | filter:{nombre:filtro}" id="{{menu.id}}">
+                <div class="detailmenu" >
+                    <address>
+                        <label><strong>{{product.nombre}}</strong></label>
+                        <label>Precio: <strong>{{product.precio_menu }} €</strong></label>
+                        <div stars-menus-rating rating="{{product.valoracion}}"></div>
+                        <button class="btn btn-imfo btn-read-more" ng-click="vm.showModalDetails( menu.id )">+</button>
+                        <button class="btn btn-imfo btn-read-more" ng-click="vm.centerOnMap( menu.id )">Ver</button>
+                    </address>
+                </div>
+            </li>
+        </ol>
     </article>
 </section>

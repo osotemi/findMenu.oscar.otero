@@ -5,6 +5,7 @@
 @import "contact.scss";
 @import "forms.scss";
 @import "navtree.scss";
+@import "user.scss";
 
 @import "footer.scss";
 //@import "products.scss";
@@ -64,6 +65,13 @@
         @include mq-panoramic-desktop-width {
             @include responsive-layout(800px, 100%);    
         }
+
+        h2 {
+            color: $color_alerta;
+            font-size: 3em;
+            font-weight: bold;
+            padding: 5%;
+        }
     }
 
 /* ==========================================================================
@@ -71,6 +79,9 @@
    ========================================================================== */
    .base-section {
         @include background-default('../../images/pantalla-carga.png');
+        @media (min-width: #{$tablet-width}) {
+            @include background-cover('../../images/background.png');
+        }
    }
 
    .base-article {
@@ -86,7 +97,7 @@
         max-width: 450px;
         width: 90%;
 
-        h2 {
+        #main-title {
              /* tiempo de duracion de la animacion */
             animation-duration: 5s;
             /* nombre de la animacion */
@@ -97,8 +108,14 @@
             font-size: 3em;
             font-weight: bold;
             padding: 5%;
-            text-shadow: 0px 0px 9px $color_blanco;
         }
+   }
+
+   .alert-article {
+       background-color: $color_rojo_translucido;
+       h2 {
+           color: $color_amarillo;
+       }
    }
 
    .button-default{

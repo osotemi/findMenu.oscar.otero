@@ -22,6 +22,16 @@
                     controllerAs: 'vm',
                     title: 'User View'
                 }
+            },
+            {
+                state: 'profile',
+                config: {
+                    url: '/user/profile',
+                    templateUrl: 'app/user/user-profile.html',
+                    controller: 'UserController',
+                    controllerAs: 'vm',
+                    title: 'User View'
+                }
             }
         ];
     }

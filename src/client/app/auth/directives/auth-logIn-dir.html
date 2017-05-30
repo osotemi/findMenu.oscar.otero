@@ -1,5 +1,7 @@
 <span ng-controller="AuthController as vm">
+    <a href="/user/profile">
+        <img ng-hide="!vm.authUser" src="{{vm.userSesion.userAvatar}}"></img>
+    </a>
     <button id="btn-login" type="button" ng-click="vm.openLogInModal()" ng-hide="vm.authUser" class="fa fa-sign-in" aria-hidden="true">Log In</button>
-    <h3 ng-hide="!vm.authUser">{{vm.userSesion.userEmail}}</h3>
     <button id="btn-logout" type="button" ng-click="vm.logOut()" ng-hide="!vm.authUser" class="fa fa-sign-out" aria-hidden="true">Log Out</button>
 </span>
