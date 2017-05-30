@@ -17,22 +17,12 @@
                 state: 'auth',
                 config: {
                     url: '/auth',
-                    templateUrl: 'app/auth/singup.html',
+                    templateUrl: 'app/auth/auth.html',
                     controller: 'AuthController',
                     controllerAs: 'vm',
                     title: 'Authentication',
                 }
-            },
-            {
-            state: 'signup',
-            config: {
-                url: '/auth/signup',
-                templateUrl: 'app/auth/auth-singup-modal.html',
-                controller: 'AuthController',
-                controllerAs: 'vm',
-                title: 'Sign Up'
-            }
-        }
-      ];
+            }, 
+        ];
     }
 })();

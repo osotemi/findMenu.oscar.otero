@@ -5,31 +5,20 @@
         .module('app.main')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$q', '$state', 'logger', '$translate', '$translatePartialLoader'];
+    MainController.$inject = ['logger', '$q', '$state', '$translate', '$translatePartialLoader'];
     /* @ngInject */
-    function MainController($q, $state, logger, $translate, $translatePartialLoader) {
+    function MainController(logger, $q, $state, $translate, $translatePartialLoader) {
         var vm = this;
-        vm.singInOnClick = singInOnClick;
         vm.title = 'Main';
+        vm.singInOnClick = singInOnClick;
+        
         $translatePartialLoader.addPart('main');
         $translate.refresh();
 
         activate();
 
         function activate() {
-            var promises = [];
-            var data = {
-                name: 'Admin Findmenu',
-                from: 'oscarompro@gmail.com',
-                to: 'oscar.otero.millan@gmail.com',
-                subject: 'test inputSubject',
-                text: 'test inputMessage',
-                template: 'toUserTemplate'
-            };
-
-            return $q.all(promises).then(function() {
-                console.log('Activated Main View');
-            });
+            console.log('Activated Main View');
         }
 
         //Funcionalidad de cookies

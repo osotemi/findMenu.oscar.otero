@@ -5,15 +5,15 @@ var mySql = require('../config/config.db.js');
 var authModel = {};
 
 authModel.getUser = function (userData, callback) {
+    console.log(userData);
     if (mySql.connection) {
         mySql.connection.query(
-            'SELECT * FROM USERS WHERE userEmail = ? AND userPassword = ?', userData, function (err, result) {
+            'SELECT * FROM USERS WHERE userEmail = ?', userData, 
+            function (err, result) {
                 if (err) {
-                    console.log('getUser OK');
                     throw err;
                 } else {
-                    console.log('getUser FAIL');
-                    callback(result);
+                    callback(null, result);
                 }
             }
         );

@@ -11,6 +11,7 @@ exports.signup = function (req, res, next) {
         if (!user) {
             return res.send('Error name');
         }
+        
         return res.send(true);
 
     })(req, res, next);
@@ -18,14 +19,14 @@ exports.signup = function (req, res, next) {
 
 exports.login = function (req, res, next) {
     passport.authenticate('local-login', function (err, user, info) {
-        console.log('Antes de authenticate-local-login');
-        if (err) {
+        if (err) {            
             return res.send('err');
         }
         if (!user) {
-            return res.send('Error on email or pass');
+            console.log('auth controller !err' + JSON.stringify(info));
         }
-        return res.send(true);
+        console.log('auth controller login OK');
+        return res.send(user);
 
     })(req, res, next);
-};/* auth controller  */
+};

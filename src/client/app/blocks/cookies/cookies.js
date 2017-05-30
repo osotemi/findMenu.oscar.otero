@@ -116,7 +116,8 @@
         }
 
         function CheckUser() {
-            var user = new GetUser();
+            var user = GetUser();
+            console.log('Check user' + user);
             if (user) {return true;}//DecodeData();
             NewSession();
             return false;
@@ -128,12 +129,12 @@
                 case 'session':
                     $cookies.remove('session');
                     break;
-                case 'user':
-                    $cookies.remove('user');
+                case 'userCookie':
+                    $cookies.remove('userCookie');
                     break;
                 default:
                     $cookies.remove('session');
-                    $cookies.remove('user');
+                    $cookies.remove('userCookie');
                     break;
             }
             
@@ -161,7 +162,7 @@
 
         function GetUser() {
             //función para comprobar si existe cookie de usuario registrado
-            var userCookie = $cookies.getObject('user');
+            var userCookie = $cookies.getObject('userCookie');
             if (userCookie) {
                 userCookie = Base64decode(userCookie);
                 userCookie = JSON.parse(userCookie);
@@ -170,7 +171,7 @@
             return false;
         }
 
-        function NewSession(users) {
+        function NewSession(user) {
             //Crear variables con los datos necesarios
             var sessionData = {
                 cookiesOk : false,
@@ -180,10 +181,11 @@
                 userId: '', 
                 userType: 'guest'
             };
-            if (users) {
-                sessionData.userId = users.user;
-                sessionData.userType = users.type;
-                sessionData.name = users.name;
+            if (user) {
+                sessionData.userId = user.userId;
+                sessionData.userType = user.userType;
+                sessionData.name = user.userName;
+                sessionData.avatar = user.userAvatar;
             }
             
             //Se crea cookie de session 
@@ -202,6 +204,7 @@
                 userType: 'user'
             };
             if (user) {
+                console.log('NewUserCookie' + user);
                 sessionData.userId = user.user;
                 sessionData.userType = user.type;
                 sessionData.name = user.name;

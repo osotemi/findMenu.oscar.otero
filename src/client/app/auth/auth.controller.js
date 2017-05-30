@@ -5,11 +5,9 @@
         .module('app.auth')
         .controller('AuthController', AuthController);
 
-    AuthController.$inject = ['cookies', 'dataservice', 'logger',
-        '$q', '$scope', '$state', '$translate', '$translatePartialLoader', '$uibModal', '$timeout'];
+    AuthController.$inject = ['cookies', 'dataservice', 'logger', '$q', '$scope', '$state', '$translate', '$translatePartialLoader', '$uibModal', '$timeout'];
     /* @ngInject */
-    function AuthController(cookies, dataservice, logger,
-        $q, $scope, $state, $translate, $translatePartialLoader, $uibModal, $timeout) {
+    function AuthController(cookies, dataservice, logger, $q, $scope, $state, $translate, $translatePartialLoader, $uibModal, $timeout) {
         var vm = this;
         vm.title = 'Authentication';
         vm.inputUser = '';
@@ -21,34 +19,50 @@
         vm.closeModal = closeModal;
         vm.submitSignup = submitSignup;
         vm.openLogInModal = openLogInModal;
+        vm.openSingUpModal = openSingUpModal;
         vm.logOut = logOut;
         vm.logIn = logIn;
-
         $translatePartialLoader.addPart('auth');
         $translate.refresh();
 
         activate();
 
         function activate() {
+            var promises = [checkUserCookies()];
+            
+            return $q.all(promises).then(function() {
+                console.log('Activated Auth View');
+            });
+
+        }
+
+        function checkUserCookies() {
             if (cookies.CheckUser()) {
                 vm.authUser = true;
+                vm.userSesion = cookies.GetUser();
+                console.log('auth-controller User cookie found' + JSON.stringify(vm.userSesion));
             }
             //NavBar visible
-            $scope.isNavCollapsed = false;
+            else{
+                vm.authUser = false;
+                console.log('auth-controller User not cookie found');
+            }
         }
 
         /* Email singup */
         function openSingUpModal() {
-            var modalInstance = $uibModal.open({
+            console.log('open sing up modal');
+            vm.modalInstance = $uibModal.open({
                 animation: 'true',
                 scope: $scope,
                 size: 'lg',
-                templateUrl: 'app/auth/auth-singup-modal.html'
+                templateUrl: 'app/auth/auth-singup-modal.html',
             });
+            
         }
 
         function openLogInModal() {
-            var modalInstance = $uibModal.open({
+            vm.modalInstance = $uibModal.open({
                 animation: 'true',
                 scope: $scope,
                 size: 'lg',
@@ -57,8 +71,8 @@
         }
 
         function closeModal() {
-            //console.log('Close modal');
-            $uibModal.dismiss('cancel');
+            console.log('Close modal');
+            vm.modalInstance.dismiss('cancel');
         }
         function submitSignup() {
 
@@ -75,8 +89,8 @@
                 dataservice.signUp(dataUserJSON).then(function (response) {
                     if (response.data === true) {
                         $timeout(function () {
-                            logger.success('Usuario introducido');
-                            $uibModal.dismiss('cancel');
+                            logger.success('Usuario introducido, por favor revise su email');
+                            vm.modalInstance.dismiss('cancel');
                             $state.go('login');
                         }, 3000);
                     } else {
@@ -105,25 +119,21 @@
         function logIn() {
             console.log('login');
             var data = {
-                'email': vm.inputEmail,
+                'user': vm.inputEmail,
                 'password': vm.inputPass
             };
 
             var dataUser = JSON.stringify(data);
             dataservice.logIn(dataUser).then(function (response) {
-                if (response.data.email === vm.inputEmail) {
+                if (response.data.userEmail === vm.inputEmail) {
                     logger.success('Usuario autentificado');
                     cookies.NewUserCookie(response.data);
                     vm.userSesion = response.data;
-                    console.log(JSON.stringify(vm.userSesion));
-                    $uibModal.dismiss('cancel');
                     vm.closeModal();
                     $state.go('user');
-                } else if (response.data === 'errorcredentials') {
-                    console.log('ERROR logIn - response.data === errorcredentials ');
+                } else if (response.data === 'Error on email or pass') {
                     logger.error('Error en las credenciales, el usuario o la contraseña no son correctos');
                 } else {
-                    console.log('ERROR logIn - else ' + response);
                     logger.error('Error en el server');
                 }
 
@@ -131,7 +141,9 @@
         }
 
         function logOut() {
-
+            console.log('LogOut')
+            cookies.ClearCookies('userCookie');
+            $state.go($state.$current);
         }
     }
 })();

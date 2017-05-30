@@ -18,7 +18,7 @@
 
     dataservice.$inject = ['$http', '$q', 'exception', 'logger'];
     /* @ngInject */
-    function dataservice($http, $q, exception, logger) {
+    function dataservice($https, $q, exception, logger) {
         var service = {
             getProducts: getProducts,
             logIn: logIn,
@@ -42,7 +42,7 @@
          */
 
         function sendMail(messageInfo) {
-            return $http.post('/api/sendmail', messageInfo)
+            return $https.post('/api/sendmail', messageInfo)
                 .then(success)
                 .catch(fail);
 
@@ -68,7 +68,7 @@
          */
 
         function signUp(userData) {
-            return $http.post('/api/signup', userData)
+            return $https.post('/api/signup', userData)
                 .then(success)
                 .catch(fail);
             //si devuelve promesa ejecuta success
@@ -89,7 +89,8 @@
          * 
          */
         function logIn(userData) {
-            return $http.get('/api/login', userData)
+            console.log('EN LOG IN');
+            return $https.post('/api/login', userData)
                 .then(success)
                 .catch(fail);
             function success(response) {
@@ -105,12 +106,12 @@
         function getProducts(userId) {
             if (userId) {
                 //getFovourites
-                return $http.get('/api/product_user', userId)
+                return $https.get('/api/product_user', userId)
                     .then(success)
                     .catch(fail);
             }
             else {
-                return $http.get('/api/product')
+                return $https.get('/api/product')
                     .then(success)
                     .catch(fail);
             }

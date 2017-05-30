@@ -5,9 +5,9 @@
         .module('app.layout')
         .controller('ShellController', ShellController);
 
-    ShellController.$inject = ['$log', '$rootScope', '$timeout', 'config', 'cookies', 'logger', 'toastr',];
+    ShellController.$inject = ['config', 'cookies', 'logger', 'toastr', '$q', '$log', '$rootScope', '$timeout'];
     /* @ngInject */
-    function ShellController($log, $rootScope, $timeout, config, cookies, logger, toastr) {
+    function ShellController(config, cookies, logger, toastr, $q, $log, $rootScope, $timeout) {
         var vm = this;
         vm.loadingMessage = 'Please wait ...';
         vm.isBusy = true;
@@ -17,6 +17,21 @@
         activate();
 
         function activate() {
+            var promises = [checkCookiesState];
+            
+            return $q.all(promises).then(function() {
+                console.log('Activated Main View');
+            });
+        }
+
+        function hideSplash() {
+            //Force a 1 second delay so we can see the splash.
+            $timeout(function () {
+                $rootScope.showSplash = false;
+            }, 5500);
+        }
+
+        function checkCookiesState(){
             if (cookies.CheckCookies()) {
                 vm.session = cookies.GetSession();
                 if (!vm.session.cookiesOk) {
@@ -26,14 +41,7 @@
             else {
                 showCookiesAdvice();
             }
-            hideSplash();
-        }
-
-        function hideSplash() {
-            //Force a 1 second delay so we can see the splash.
-            $timeout(function () {
-                $rootScope.showSplash = false;
-            }, 5500);
+            return true;
         }
 
         function showCookiesAdvice() {
