@@ -1,10 +1,12 @@
-# helloworld
+# findMenu
 
 **Generated from HotTowel Angular**
+#Project data
+Proyect generatd by Oscar Otero Millán
 
->*Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
+Code can be found on https://github.com/osotemi/findMenu.oscar.otero
+Demo version https://findmenu.ga
 
->More details about the styles and patterns used in this app can be found in my [Angular Style Guide](https://github.com/johnpapa/angularjs-styleguide) and my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at [Pluralsight](http://pluralsight.com/training/Authors/Details/john-papa) and working in teams.
 
 ## Prerequisites
 
@@ -76,9 +78,9 @@ app --> [
         ],
         app.core --> [
 			'app.layout',
-            'blocks.cookies',
-            'blocks.exception',
-            'blocks.logger', 
+           		 'blocks.cookies',
+		         'blocks.exception',
+            		'blocks.logger', 
             'blocks.router',
             'ngAnimate', 
             'ngCookies',
@@ -106,7 +108,6 @@ app --> [
         app.user --> [
             app.core
         ],
-        app.widgets,
 		
     ]
 ```
@@ -293,5 +294,5 @@ The `blocks.router` module contains a routing helper module that assists in addi
     ```
 
 ## License
-
 MIT
+CC 4.0
