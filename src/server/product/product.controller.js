@@ -30,6 +30,19 @@ exports.getProductsFollowers = function(req, res) {
                 res.send(err);
             }
             console.log(followers);
+            res.json(followers);
         }
     );
-}
+};
+
+exports.getProductImages = function(req, res) {
+    Product.getProductImages(
+        function(err, images) {
+            if (err) {
+                res.send(err);
+            }
+            console.log(images);
+            res.json(images);
+        }
+    );
+};

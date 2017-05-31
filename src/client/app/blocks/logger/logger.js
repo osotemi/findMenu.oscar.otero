@@ -25,7 +25,7 @@
         /////////////////////
 
         function error(message, data, title) {
-            toastr.error(message, title);
+            //toastr.error(message, title);
             //$log.error('Error: ' + message, data);
         }
 

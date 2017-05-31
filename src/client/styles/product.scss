@@ -5,13 +5,41 @@
     padding: 5%;
 }
 
-#product-data {
-    label {
-        display: block;
-        color: $color_alerta;
+#product-list-article{
+    font-size: $font_size * 2;
 
-        strong {
-            color: $color_blanco;
+   
+    ol {
+        font-size: $font_size;
+        height: 500px;
+        flex-direction: column;
+        overflow-x: visible;
+        overflow-y: scroll;
+        direction:rtl;
+
+        li {
+            direction:ltr;
+        }
+    }
+
+    @media (min-width: #{$tablet-width}) {
+        ol {
+            width: 60%;
+            align-self: right;
+        }
+    }
+    #product-data {
+        label {
+            display: block;
+            color: $color_alerta;
+
+            strong {
+                color: $color_blanco;
+            }
+        }
+        .product-img {
+            max-height: 125px;
+            max-width: 125px;
         }
     }
 }

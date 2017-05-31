@@ -6,6 +6,8 @@ module.exports = function (app) {
     //app.get('/api/product/:foodId', ControllerProducts.getProductById);
 
     app.get('/api/products/', ControllerProduct.getProductsDefault);
+    
+    app.get('/api/products/images', ControllerProduct.getProductImages);
 
     //app.get('/api/products/:userId', ControllerProducts.getProductsByUser);
 

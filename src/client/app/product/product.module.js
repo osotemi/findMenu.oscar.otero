@@ -3,6 +3,7 @@
 
     angular.module('app.product', [
         'app.core',
+        'ngMap',
         'ui.bootstrap'
     ]);
 })();

@@ -21,7 +21,7 @@
             var promises = [checkUserCookies()];
             
             return $q.all(vm.promises).then(function () {
-                if(vm.userAutentified) {
+                if (vm.userAutentified) {
                     console.log('Redirected to user');
                     $state.go('user');
                 }

@@ -41,7 +41,8 @@
    ========================================================================== */
     main {
         background-color: $color_gris_oscuro;
-        height: 100%;
+        height: auto;
+        min-height: 100%;
         width: 100%;
     }
 

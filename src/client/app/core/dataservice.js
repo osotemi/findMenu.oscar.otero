@@ -21,6 +21,7 @@
     function dataservice($https, $q, exception, logger) {
         var service = {
             getProducts: getProducts,
+            getProductsImages: getProductsImages,
             logIn: logIn,
             sendMail: sendMail,
             signUp: signUp
@@ -120,6 +121,22 @@
 
             function fail(e) {
                 console.log('getProducts response fail' + e);
+                return exception.catcher('XHR Failed for getProducts')(e);
+            }
+        }
+
+        function getProductsImages() {
+            return $https.get('/api/products/images')
+                    .then(success)
+                    .catch(fail);
+            
+            function success(response) {
+                console.log(JSON.stringify(response));
+                return response;
+            }
+
+            function fail(e) {
+                console.log('getProductsImages response fail' + e);
                 return exception.catcher('XHR Failed for getProducts')(e);
             }
         }

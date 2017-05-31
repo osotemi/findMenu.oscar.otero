@@ -20,7 +20,7 @@ productModel.getProductDefault = function (callback) {
             }
         );
     }
-}
+};
 
 productModel.getProductMostFollowed = function (callback) {    
     if (mySql.connection) {
@@ -105,6 +105,20 @@ productModel.getFollowers = function (callback) {
     }
 };
 
-
+productModel.getProductImages = function (callback) {
+    if (mySql.connection) {
+        mySql.connection.query(
+            'select F.foodId, I.imagePath from FOOD as F left join FOODIMAGES as FI ON F.foodId = FI.fooimgFoodId left join IMAGES as I ON FI.fooimgImageId = I.imageId', 
+            function (error, images) {
+                if (error) {
+                    throw error;
+                }
+                else {
+                    callback(null, images);
+                }
+            }
+        );
+    }
+};
 
 module.exports = productModel;

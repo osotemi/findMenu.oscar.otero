@@ -196,7 +196,7 @@
         }
 
         function NewUserCookie(user) {
-             //Crear variables con los datos necesarios
+            //Crear variables con los datos necesarios
             console.log('NewSession' + JSON.stringify(user));
             if (user) {
                 var userData = {

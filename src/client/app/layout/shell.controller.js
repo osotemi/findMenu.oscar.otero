@@ -31,7 +31,7 @@
             }, 5500);
         }
 
-        function checkCookiesState(){
+        function checkCookiesState() {
             if (cookies.CheckCookies()) {
                 vm.session = cookies.GetSession();
                 if (!vm.session.cookiesOk) {

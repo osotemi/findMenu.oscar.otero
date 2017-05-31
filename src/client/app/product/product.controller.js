@@ -5,9 +5,9 @@
         .module('app.product')
         .controller('ProductController', ProductController);
 
-    ProductController.$inject = ['$q', '$state', '$window', 'cookies', 'dataservice'];
+    ProductController.$inject = ['$q', '$state', '$window', 'cookies', 'dataservice', 'NgMap'];
     /* @ngInject */
-    function ProductController($q, $state, $window, cookies, dataservice) {
+    function ProductController($q, $state, $window, cookies, dataservice, NgMap) {
         var vm = this;
 
         vm.promises = [];
@@ -17,7 +17,6 @@
         vm.userAutentified = false;
         vm.userCookie = cookies.GetUser();
         
-
         activate();
 
         function activate() {
@@ -50,9 +49,15 @@
         }
 
         function loadProducts() {
-            return dataservice.getProducts(false).then(function (products) {;
+            return dataservice.getProducts(false).then(function (products) {
                 vm.products = products.data;
-                console.log(JSON.stringify(vm.products));
+                return dataservice.getProductsImages().then(function (images) {
+                    for (var i = 0; i < vm.products.length; i++) {
+                        console.log(JSON.stringify(images.data[i]));
+                        vm.products[i].foodImage = '../images/food/' + images.data[i].imagePath;
+                        console.log(JSON.stringify(vm.products[i]));
+                    }
+                }); 
             }); 
         }
     }

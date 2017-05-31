@@ -40,13 +40,13 @@
             if (cookies.CheckUser()) {
                 vm.authUser = true;
                 vm.userSesion = cookies.GetUser();
-                if(!vm.userSesion.userAvatar){
+                if (!vm.userSesion.userAvatar) {
                     vm.userSesion.userAvatar = '../images/avatar/default-avatar.svg';
                 }
                 console.log('auth-controller User cookie found' + JSON.stringify(vm.userSesion));
             }
             //NavBar visible
-            else{
+            else {
                 vm.authUser = false;
                 console.log('auth-controller User not cookie found');
             }
@@ -131,7 +131,7 @@
                 if (response.data.userEmail === vm.inputEmail) {
                     logger.success('Usuario autentificado');
                     vm.userSesion = response.data;
-                    if(!vm.userSesion.userAvatar) {
+                    if (!vm.userSesion.userAvatar) {
                         vm.userSesion.userAvatar = 'default-avatar.svg';
                     }
                     cookies.NewUserCookie(vm.userSesion);
@@ -148,7 +148,7 @@
         }
 
         function logOut() {
-            console.log('LogOut')
+            console.log('LogOut');
             cookies.ClearCookies('userCookie');
             $state.go($state.$current);
         }

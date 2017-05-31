@@ -1,10 +1,10 @@
 <section id="product-view" class="base-section">
     <!--<div ng-include="'app/product/product-carrousel.html'"></div>-->
     <article id="product-list-article" >
-
+        
         <h3 class="article-h3">Encuentra tu menú entre {{vm.products.length}} disponibles</h3>
         <ol>
-        <li ng-repeat="product in vm.products" id="{{product.id}}">
+        <li ng-repeat="product in vm.products" id="{{product.id}}" ng-click="vm.viewProduct(product.foodId)">
             <div class="detail-product" >
                 <address id="product-data">
                     <label>Nombre<strong>{{product.foodName}}</strong></label>
@@ -12,11 +12,17 @@
                     <label><strong>{{product.foodDescription }}</strong></label>
                     
                     <label>Usuarios que repetirian: "{{product.foodFollowers}}"</div>
+                    <div class="product-img"><img class="img-responsive" alt="imagen producto" src="{{product.foodImage}}"></img></div>
                     <button class="button-default" ng-click="vm.showProductView(product.foodId)">Detalles</button>
                     <button class="button-default" ng-click="vm.centerOnMap(product.foodId)">Localización</button>
                 </address>
             </div>
         </li>
         </ol>
+        <div class="map-div">
+            <ng-map default-style="true" center="[39.57, -3.52]">
+                <marker position="current" animation="Animation.BOUNCE" centered="true"></marker>
+            </ng-map>
+        </div>
     </article>
 </section>
